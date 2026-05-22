@@ -2,16 +2,16 @@
 <Container version="2">
   <Name>GyroidVault</Name>
   <Repository>ghcr.io/teecodedev/gyroidvault:latest</Repository>
-  <Registry>https://github.com/TeeCodeDev/GyroidVault</Registry>
+  <Registry>https://ghcr.io/teecodedev/gyroidvault</Registry>
   <Network>bridge</Network>
   <MyPort>3457</MyPort>
   <Shell>sh</Shell>
   <Privileged>false</Privileged>
-  <Support>https://github.com/TeeCodeDev/GyroidVault/issues</Support>
+  <Support>https://forums.unraid.net/topic/198986-support-gyroidvault-3d-model-library-and-print-manager/</Support>
   <Project>https://github.com/TeeCodeDev/GyroidVault</Project>
   <Overview>GyroidVault is a modern, self-hosted 3D model library and print management platform. Organize your STL, 3MF, and Gcode files, track your print history, and manage your projects in a beautiful dashboard.</Overview>
   <Category>Tools: 3D: Status:Stable</Category>
-  <WebUI>http://[IP]:[PORT:3457]/</WebUI>
+  <WebUI>http://[IP]:[PORT:3000]/</WebUI>
   <TemplateURL>https://raw.githubusercontent.com/TeeCodeDev/unraid-templates/main/GyroidVault.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/TeeCodeDev/GyroidVault/main/public/icon.png</Icon>
   <ExtraParams/>
