@@ -60,4 +60,7 @@
   <Config Name="WebUI Port" Target="3000" Default="3457" Mode="tcp" Description="The port for the GyroidVault web interface." Type="Port" Display="always" Required="true" Mask="false">3457</Config>
   <Config Name="AppData" Target="/app/data" Default="/mnt/user/appdata/gyroidvault" Mode="rw" Description="Storage for database and settings." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/gyroidvault</Config>
   <Config Name="3D Models Library" Target="/library" Default="/mnt/user/3Dprints" Mode="rw" Description="Path to your 3D models and prints library." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/3Dprints</Config>
+  <Config Name="PUID" Target="PUID" Default="99" Mode="" Description="User ID (PUID)." Type="Variable" Display="advanced" Required="false" Mask="false">99</Config>
+  <Config Name="PGID" Target="PGID" Default="99" Mode="" Description="Group ID (PGID)." Type="Variable" Display="advanced" Required="false" Mask="false">99</Config>
+  <Config Name="UMASK" Target="UMASK" Default="022" Mode="" Description="Umask value." Type="Variable" Display="advanced" Required="false" Mask="false">022</Config>
 </Container>
