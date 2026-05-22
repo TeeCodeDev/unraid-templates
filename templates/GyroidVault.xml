@@ -40,7 +40,7 @@
     </Volume>
     <Volume>
       <HostDir>/mnt/user/3Dprints</HostDir>
-      <ContainerDir>/library</ContainerDir>
+      <ContainerDir>/app/data/library</ContainerDir>
       <Mode>rw</Mode>
     </Volume>
   </Data>
