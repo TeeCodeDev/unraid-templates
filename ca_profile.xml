@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
-<Repository>
+<CommunityApplications>
+  <Profile>Self-hosted, lightning-fast 3D printing and model management applications.</Profile>
   <Name>TeeCodeDev</Name>
   <Support>https://github.com/TeeCodeDev/unraid-templates/issues</Support>
   <DonateText>If you like GyroidVault, buy me a coffee!</DonateText>
   <DonateLink>https://ko-fi.com/D1D51ZGUNL</DonateLink>
-  <Overview>Self-hosted, lightning-fast 3D printing and model management applications.</Overview>
-</Repository>
+</CommunityApplications>
