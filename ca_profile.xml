@@ -1,7 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
 <CommunityApplications>
-  <Profile>Self-hosted, lightning-fast 3D printing and model management applications.</Profile>
+  <!-- Required profile -->
+  <Profile>
+    Self-hosted, lightning-fast 3D printing and model management applications.
+  </Profile>
+  <!-- Optional web page -->
   <WebPage>https://github.com/TeeCodeDev/unraid-templates</WebPage>
+  <!-- Optional support and donation links -->
   <Forum>https://github.com/TeeCodeDev/unraid-templates/issues</Forum>
-  <DonateText>If you like GyroidVault, buy me a coffee!</DonateText>
+  <!-- Optional donation link -->
   <DonateLink>https://ko-fi.com/D1D51ZGUNL</DonateLink>
+  <!-- Optional donation text -->
+  <DonateText>If you like GyroidVault, buy me a coffee!</DonateText>
 </CommunityApplications>
