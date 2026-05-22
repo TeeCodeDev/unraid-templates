@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<Repository>
+  <Name>TeeCodeDev</Name>
+  <Support>https://github.com/TeeCodeDev/unraid-templates/issues</Support>
+  <DonateText>If you like GyroidVault, buy me a coffee!</DonateText>
+  <DonateLink></DonateLink>
+  <Overview>Self-hosted, lightning-fast 3D printing and model management applications.</Overview>
+</Repository>
