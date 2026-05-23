@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <Container version="2">
   <Name>GyroidVault</Name>
+  <Version>v1.1.0</Version>
   <Repository>ghcr.io/teecodedev/gyroidvault:latest</Repository>
   <Registry>https://ghcr.io/teecodedev/gyroidvault</Registry>
   <Network>bridge</Network>
@@ -18,7 +19,20 @@
   <ExtraParams/>
   <PostArgs/>
   <CPUset/>
-  <DateInstalled/>
+  <Date>2026-05-23</Date>
+  <Changes>
+### v1.1.0 (2026-05-23)
+This update brings a highly requested Folder View mode and fixes several annoying bugs under the hood.
+
+**What's new:**
+- **Folder View:** You can now browse your library exactly as it exists on your disk. Enable this via System Settings.
+
+**Fixes:**
+- **Persistent navigation:** Clicking the back button from a model page now correctly remembers your current page and active filters.
+- **Scanner performance:** Adjusted the background scanner so it no longer freezes the web UI when processing massive libraries (e.g. 2TB+).
+- Custom categories created in the settings now show up in menus immediately, without needing a container restart.
+- Fixed a small visual bug that sometimes caused the 'Open in Slicer' dropdown menu to disappear when hovering over it.
+  </Changes>
   <DonateText/>
   <DonateLink/>
   <Description>Self-hosted 3D model library and print management platform.</Description>
