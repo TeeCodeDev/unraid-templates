@@ -54,22 +54,11 @@ This update brings a highly requested Folder View mode and fixes several annoyin
     </Volume>
     <Volume>
       <HostDir>/mnt/user/3Dprints</HostDir>
-      <ContainerDir>/app/data/library</ContainerDir>
+      <ContainerDir>/library</ContainerDir>
       <Mode>rw</Mode>
     </Volume>
   </Data>
-  <Environment>
-    <Variable>
-      <Value>Europe/Amsterdam</Value>
-      <Name>TZ</Name>
-      <Mode/>
-    </Variable>
-    <Variable>
-      <Value>/library</Value>
-      <Name>LIBRARY_PATH</Name>
-      <Mode/>
-    </Variable>
-  </Environment>
+  <Environment/>
   <Labels/>
   <Config Name="WebUI Port" Target="3000" Default="3457" Mode="tcp" Description="The port for the GyroidVault web interface." Type="Port" Display="always" Required="true" Mask="false">3457</Config>
   <Config Name="AppData" Target="/app/data" Default="/mnt/user/appdata/gyroidvault" Mode="rw" Description="Storage for database and settings." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/gyroidvault</Config>
@@ -77,4 +66,6 @@ This update brings a highly requested Folder View mode and fixes several annoyin
   <Config Name="PUID" Target="PUID" Default="99" Mode="" Description="User ID (PUID)." Type="Variable" Display="advanced" Required="false" Mask="false">99</Config>
   <Config Name="PGID" Target="PGID" Default="99" Mode="" Description="Group ID (PGID)." Type="Variable" Display="advanced" Required="false" Mask="false">99</Config>
   <Config Name="UMASK" Target="UMASK" Default="022" Mode="" Description="Umask value." Type="Variable" Display="advanced" Required="false" Mask="false">022</Config>
+  <Config Name="Timezone" Target="TZ" Default="Europe/Amsterdam" Mode="" Description="Container Timezone" Type="Variable" Display="advanced" Required="false" Mask="false">Europe/Amsterdam</Config>
+  <Config Name="Library Path (Internal)" Target="LIBRARY_PATH" Default="/library" Mode="" Description="Internal container path for the library. Must match the 3D Models Library Target path." Type="Variable" Display="advanced" Required="false" Mask="false">/library</Config>
 </Container>
