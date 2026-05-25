@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Container version="2">
   <Name>GyroidVault</Name>
-  <Version>v1.1.0</Version>
+  <Version>v1.1.1</Version>
   <Repository>ghcr.io/teecodedev/gyroidvault:latest</Repository>
   <Registry>https://ghcr.io/teecodedev/gyroidvault</Registry>
   <Network>bridge</Network>
@@ -19,8 +19,23 @@
   <ExtraParams/>
   <PostArgs/>
   <CPUset/>
-  <Date>2026-05-23</Date>
+  <Date>2026-05-25</Date>
   <Changes>
+### v1.1.1 (2026-05-25)
+A maintenance update to fix some bugs and improve the Folder View and fix some slicer integration bugs that are reported.
+
+### What's new:
+
+* Folder View UI upgrades: Added a item counter (Showing X Folders / Y Files) at the top of the folder view so you know exactly what you're looking at.
+* Folder View 3D Previews: You can now click directly on an STL or 3MF model inside the folder view to launch the interactive 3D preview, without needing to leave the page!
+* Per-file Thumbnails: Gcode files and Images now display their own unique thumbnail inside the Folder View, rather than all files inheriting the main model thumbnail.
+* ARM64 Support: The official Docker image now natively supports Raspberry Pi (4/5) and Apple Silicon platforms!
+
+### Fixes:
+
+* Fixed a bug where clicking Open in Slicer for Bambu Studio and OrcaSlicer would result in a download error or a blank page if your files had spaces in their names. It should now reliably open your slicer and load the file.
+
+
 ### v1.1.0 (2026-05-23)
 This update brings a highly requested Folder View mode and fixes several annoying bugs under the hood.
 
