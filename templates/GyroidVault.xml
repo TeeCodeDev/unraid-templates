@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Container version="2">
   <Name>GyroidVault</Name>
-  <Version>v1.1.1</Version>
+  <Version>v1.2.0</Version>
   <Repository>ghcr.io/teecodedev/gyroidvault:latest</Repository>
   <Registry>https://ghcr.io/teecodedev/gyroidvault</Registry>
   <Network>bridge</Network>
@@ -21,6 +21,25 @@
   <CPUset/>
   <Date>2026-05-25</Date>
   <Changes>
+### v1.2.0 (2026-05-25)
+Thanks to a long weekend, I had some extra time to dive into the code and roll out a new update!
+
+First up, there's a change in the supported slicers due to restrictions from the slicers themselves:
+
+### Slicer Integration
+
+**Added**: Ultimaker Cura support (cura://open)
+**Added**: Creality Print support (crealityprint://open)
+**Removed**: PrusaSlicer — It turns out PrusaSlicer has a hardcoded domain whitelist (it only accepts files from printables.com). This makes it fundamentally incompatible with any self-hosted setup, so we had to remove it.
+**Removed**: Bambu Studio — Similar story here. It's restricted to makerworld.com only, so it blocks our self-hosted URLs.
+
+_Currently supported slicers: OrcaSlicer · Elegoo Slicer · Creality Print · Ultimaker Cura_
+
+**3MF Previews Fixed!** Previously, if a model only had a .3mf file and no .stl file attached, the 3D preview would just stay empty. This logic is fixed, so standard 3MF files now get full 3D previews everywhere—on the dashboard cards, the detail pages, the folder view, and shared links!
+
+**Wiki Updated;** I've also updated the [Slicer Integration Wiki](https://github.com/TeeCodeDev/GyroidVault/wiki/Slicer-Integration) to reflect these new changes and explain the slicer limitations in a bit more detail.
+
+
 ### v1.1.1 (2026-05-25)
 This is a quick maintenance update bringing several quality of life improvements to the Folder View and resolving some slicer integration bugs!
 
