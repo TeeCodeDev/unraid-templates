@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Container version="2">
   <Name>GyroidVault</Name>
-  <Version>v1.1.1</Version>
+  <Version>v1.2.1</Version>
   <Repository>ghcr.io/teecodedev/gyroidvault:latest</Repository>
   <Registry>https://ghcr.io/teecodedev/gyroidvault</Registry>
   <Network>bridge</Network>
@@ -19,8 +19,18 @@
   <ExtraParams/>
   <PostArgs/>
   <CPUset/>
-  <Date>2026-05-25</Date>
+  <Date>2026-05-28</Date>
   <Changes>
+### v1.2.1 (2026-05-28)
+### What's new:
+* 3MF Thumbnail Fallbacks: GyroidVault now automatically extracts the high-quality 2D plate thumbnail hidden inside 3MF files and displays it as a clean fallback preview on the model page.
+* Cleaner UI: When the viewer falls back to a static 2D image for unsupported 3MF files, the Drag to rotate 3D instruction text is now automatically hidden to prevent confusion.
+
+### Fixes:
+* Fixed a background pathing issue where the auto-scanner would sometimes try to save extracted thumbnails to the wrong directory, preventing them from showing up.
+
+(Note: To see thumbnails for your existing 3MF models, you may need to delete the model from GyroidVault and rescan your library so the system can extract the image fresh).
+
 ### v1.1.1 (2026-05-25)
 This is a quick maintenance update bringing several quality of life improvements to the Folder View and resolving some slicer integration bugs!
 
