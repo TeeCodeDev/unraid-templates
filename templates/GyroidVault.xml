@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Container version="2">
   <Name>GyroidVault</Name>
-  <Version>v1.1.1</Version>
+  <Version>v1.3.0</Version>
   <Repository>ghcr.io/teecodedev/gyroidvault:latest</Repository>
   <Registry>https://ghcr.io/teecodedev/gyroidvault</Registry>
   <Network>bridge</Network>
@@ -19,8 +19,28 @@
   <ExtraParams/>
   <PostArgs/>
   <CPUset/>
-  <Date>2026-05-25</Date>
+  <Date>2026-06-03</Date>
   <Changes>
+### v1.3.0 (2026-06-03)
+A big update this time! This release brings requested features for better privacy, user management, and project organization. I have also added some security features to make sure everything is safe!
+
+## New Features
+- **Private Instance Mode**: You can now completely hide your GyroidVault instance. When enabled via System Settings, visitors that are not logged in are forced to a full-screen login page and cannot browse any public models or collections.
+- **Registration Control**: The Registration feature can now be disabled from the System Settings, removing the Register tab for guests. You can however still sendout invites.
+- **Documentation Support**: You can now upload , , and  files directly to your models. Documents are placed into a separated Documentation tab in the Model view, so the 3D files and documentation won't get mixed up.
+- **Private Collections**: Collections (Projects) can now be set to Private when creating or editing them. Private collections will show a 🔒 icon and are hidden for other users.
+
+## Security Hardening (Under the Hood)
+- **Cookie-Based Authentication**: Migrated from  tokens to secure,  cookies to protect against Cross-Site Scripting (XSS) attacks.
+- **CSRF Protection**: Implemented a double-submit CSRF token system to protect against Cross-Site Request Forgery.
+- **Rate Limiting**: Added strict rate-limiting (max 5 failed attempts per 15 minutes) on the login endpoint to prevent brute-force attacks.
+- **Security Headers**: Integrated Helmet.js to enforce modern HTTP security policies (X-Frame-Options, X-Content-Type-Options, etc.).
+
+## 🔧 Bug Fixes & Improvements
+- Unified UI icons across the application (Categories, Files, and Documents now share the same trash can icon).
+- Smoother transitions between 3D Files and Documentation tabs in the Model view.
+
+
 ### v1.1.1 (2026-05-25)
 This is a quick maintenance update bringing several quality of life improvements to the Folder View and resolving some slicer integration bugs!
 
