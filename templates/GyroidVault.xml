@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Container version="2">
   <Name>GyroidVault</Name>
-  <Version>v1.1.1</Version>
+  <Version>v1.3.0</Version>
   <Repository>ghcr.io/teecodedev/gyroidvault:latest</Repository>
   <Registry>https://ghcr.io/teecodedev/gyroidvault</Registry>
   <Network>bridge</Network>
@@ -19,8 +19,32 @@
   <ExtraParams/>
   <PostArgs/>
   <CPUset/>
-  <Date>2026-05-25</Date>
+  <Date>2026-06-03</Date>
   <Changes>
+### v1.3.0 (2026-06-03)
+This release brings highly requested features for better privacy, user management, and project organization, alongside a massive security overhaul under the hood to keep your data safe!
+
+**What's new:**
+- **Private Instance Mode:** Lock down your entire GyroidVault instance. Unauthenticated visitors are forced to a full-screen login page.
+- **Registration Control:** Disable open registration to ensure only you can manually invite/create users.
+- **Documentation Support:** Upload `.pdf`, `.txt`, and `.md` files directly to your models! Documents are neatly separated into a dedicated "Documentation" tab.
+- **Private Collections:** Collections (Projects) can now be set to "Private", hiding them from normal users.
+
+**Security Hardening:**
+- Migrated to secure, `HttpOnly` cookies to protect against XSS.
+- Implemented a double-submit CSRF token system.
+- Added strict rate-limiting to prevent brute-force login attacks.
+- Integrated Helmet.js to enforce modern HTTP security policies.
+### v1.2.2 (2026-05-28)
+- Minor bug fixes and stability improvements.
+
+### v1.2.1 (2026-05-28)
+- Minor bug fixes and stability improvements.
+
+### v1.2.0 (2026-05-25)
+- **Improved Slicer Support:** Better integration with your favorite slicers.
+- **3MF Previews:** Added 3MF preview support across all views in the application.
+
 ### v1.1.1 (2026-05-25)
 This is a quick maintenance update bringing several quality of life improvements to the Folder View and resolving some slicer integration bugs!
 
