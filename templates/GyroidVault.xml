@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Container version="2">
   <Name>GyroidVault</Name>
-  <Version>v1.3.0</Version>
+  <Version>v1.3.2</Version>
   <Repository>ghcr.io/teecodedev/gyroidvault:latest</Repository>
   <Registry>https://ghcr.io/teecodedev/gyroidvault</Registry>
   <Network>bridge</Network>
@@ -19,8 +19,13 @@
   <ExtraParams/>
   <PostArgs/>
   <CPUset/>
-  <Date>2026-06-03</Date>
+  <Date>2026-06-06</Date>
   <Changes>
+### v1.3.2 (2026-06-06)
+##Hotfix
+
+* Fixed a bug #24 on fresh Docker/HTTP installations where the System, SMTP, and Users tabs would get stuck loading due to the browser silently rejecting the new HTTPS-only login cookies.
+
 ### v1.3.1 (2026-06-04)
 Fixed a bug where fresh installations couldn't register the first admin account.
 
