@@ -21,6 +21,9 @@
   <CPUset/>
   <Date>2026-06-03</Date>
   <Changes>
+### v1.3.2 (2026-06-06)
+Fixed a bug on fresh Docker/HTTP installations where the System, SMTP, and Users tabs would get stuck loading due to the browser silently rejecting the login cookies.
+    
 ### v1.3.1 (2026-06-04)
 Fixed a bug where fresh installations couldn't register the first admin account.
 
