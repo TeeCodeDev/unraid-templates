@@ -27,7 +27,6 @@
 Bug Fixes
 * Elegoo Slicer Fix: Resolved a critical issue where sending files to Elegoo Slicer via the web interface would result in a "The file does not contain any geometry data" error. Slicer URLs have been fully refactored to ensure maximum compatibility. #25 
 * Version Checker: Fixed a bug where the update checker would sometimes falsely report that a new version was available when running on the latest Docker image. #26 
-
     
 ### v1.3.2 (2026-06-06)
 Fixed a bug on fresh Docker/HTTP installations where the System, SMTP, and Users tabs would get stuck loading due to the browser silently rejecting the login cookies.
