@@ -21,6 +21,16 @@
   <CPUset/>
   <Date>2026-06-03</Date>
   <Changes>
+### v1.3.4 (2026-06-13)
+### What's New
+
+* Role-Based Access Control (RBAC): You can now assign users the role of Admin (full access), Uploader (can upload and manage their own models), or Viewer. Viewers have a clean, read-only experience where all edit/delete/upload buttons are automatically hidden. Note: The very first user on your instance (User ID 1) is automatically upgraded to Admin to ensure you're never locked out. All other existing users will default to the 'Uploader' role, meaning they won't lose any of their current upload permissions!
+
+* Bulk Selection & Tagging (Flat Grid): You can now manage your models much faster in the Flat Grid view! Simply use Ctrl+Click (or Shift+Click) to select multiple models at once, Thanks to @MFA-G 
+### Bug Fixes
+* Nested Folder Collages: Fixed an issue where the new 2x2 folder collages were not rendering correctly for folders nested deep inside other directories. #30 
+* API Security: Enforced strict ownership checks across the board. Uploaders can now only modify, edit, or delete models that they have personally uploaded.
+    
 ### v1.3.3 (2026-06-09)
 * 1-Click Slicer Opening: You can now set a "Preferred Slicer" in your User Profile (choose between OrcaSlicer, Elegoo Slicer, or Ultimaker Cura). Once set, the "Open in Slicer" button will directly open the file in your favorite slicer. (The other slicers remain available via a small dropdown arrow).
 * Dynamic Folder Collages: When browsing your Library in Folder View, folders will now automatically generate a 2x2 image collage based on the thumbnails of the files they contain! As requested in #19 
