@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Container version="2">
   <Name>GyroidVault</Name>
-  <Version>v1.3.0</Version>
+  <Version>v1.3.4</Version>
   <Repository>ghcr.io/teecodedev/gyroidvault:latest</Repository>
   <Registry>https://ghcr.io/teecodedev/gyroidvault</Registry>
   <Network>bridge</Network>
@@ -19,8 +19,18 @@
   <ExtraParams/>
   <PostArgs/>
   <CPUset/>
-  <Date>2026-06-03</Date>
+  <Date>2026-06-13</Date>
   <Changes>
+### v1.3.4 (2026-06-13)
+### What's New
+
+* Role-Based Access Control (RBAC): You can now assign users the role of Admin (full access), Uploader (can upload and manage their own models), or Viewer. Viewers have a clean, read-only experience where all edit/delete/upload buttons are automatically hidden. Note: The very first user on your instance (User ID 1) is automatically upgraded to Admin to ensure you're never locked out. All other existing users will default to the 'Uploader' role, meaning they won't lose any of their current upload permissions!
+
+* Bulk Selection & Tagging (Flat Grid): You can now manage your models much faster in the Flat Grid view! Simply use Ctrl+Click (or Shift+Click) to select multiple models at once, Thanks to @MFA-G 
+### Bug Fixes
+* Nested Folder Collages: Fixed an issue where the new 2x2 folder collages were not rendering correctly for folders nested deep inside other directories. #30 
+* API Security: Enforced strict ownership checks across the board. Uploaders can now only modify, edit, or delete models that they have personally uploaded.
+
 ### v1.3.4 (2026-06-13)
 ### What's New
 
