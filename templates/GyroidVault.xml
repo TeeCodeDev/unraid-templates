@@ -1,32 +1,30 @@
 <?xml version="1.0"?>
 <Container version="2">
   <Name>GyroidVault</Name>
-  <Version>v1.3.0</Version>
+  <Version>v1.3.4</Version>
   <Repository>ghcr.io/teecodedev/gyroidvault:latest</Repository>
   <Registry>https://ghcr.io/teecodedev/gyroidvault</Registry>
   <Network>bridge</Network>
-  <MyPort>3457</MyPort>
   <Shell>sh</Shell>
   <Privileged>false</Privileged>
   <Support>https://forums.unraid.net/topic/198986-support-gyroidvault-3d-model-library-and-print-manager/</Support>
   <Project>https://github.com/TeeCodeDev/GyroidVault</Project>
   <Overview>GyroidVault is a modern, self-hosted 3D model library and print management platform. Organize your STL, 3MF, and Gcode files, track your print history, and manage your projects in a beautiful dashboard.</Overview>
-  <Category>Tools:Utilities, Other</Category>
-  <WebUI>http://[IP]:[PORT:3000]/</WebUI>
+  <Category>Tools:Utilities, MediaServer:Other</Category>
+  <WebUI>http://[IP]:[PORT:3457]/</WebUI>
   <TemplateURL>https://raw.githubusercontent.com/TeeCodeDev/unraid-templates/main/templates/GyroidVault.xml</TemplateURL>
   <License>MIT</License>
   <Icon>https://raw.githubusercontent.com/TeeCodeDev/GyroidVault/main/public/icon.png</Icon>
   <ExtraParams/>
   <PostArgs/>
-  <CPUset/>
-  <Date>2026-06-03</Date>
+  <Date>2026-06-13</Date>
   <Changes>
 ### v1.3.4 (2026-06-13)
 ### What's New
 
 * Role-Based Access Control (RBAC): You can now assign users the role of Admin (full access), Uploader (can upload and manage their own models), or Viewer. Viewers have a clean, read-only experience where all edit/delete/upload buttons are automatically hidden. Note: The very first user on your instance (User ID 1) is automatically upgraded to Admin to ensure you're never locked out. All other existing users will default to the 'Uploader' role, meaning they won't lose any of their current upload permissions!
 
-* Bulk Selection & Tagging (Flat Grid): You can now manage your models much faster in the Flat Grid view! Simply use Ctrl+Click (or Shift+Click) to select multiple models at once, Thanks to @MFA-G 
+* Bulk Selection &amp; Tagging (Flat Grid): You can now manage your models much faster in the Flat Grid view! Simply use Ctrl+Click (or Shift+Click) to select multiple models at once, Thanks to @MFA-G 
 ### Bug Fixes
 * Nested Folder Collages: Fixed an issue where the new 2x2 folder collages were not rendering correctly for folders nested deep inside other directories. #30 
 * API Security: Enforced strict ownership checks across the board. Uploaders can now only modify, edit, or delete models that they have personally uploaded.
@@ -94,37 +92,12 @@ This update brings a highly requested Folder View mode and fixes several annoyin
   </Changes>
   <DonateText/>
   <DonateLink/>
-  <Description>Self-hosted 3D model library and print management platform.</Description>
-  <Networking>
-    <Mode>bridge</Mode>
-    <Publish>
-      <Port>
-        <HostPort>3457</HostPort>
-        <ContainerPort>3000</ContainerPort>
-        <Protocol>tcp</Protocol>
-      </Port>
-    </Publish>
-  </Networking>
-  <Data>
-    <Volume>
-      <HostDir>/mnt/user/appdata/gyroidvault</HostDir>
-      <ContainerDir>/app/data</ContainerDir>
-      <Mode>rw</Mode>
-    </Volume>
-    <Volume>
-      <HostDir>/mnt/user/3Dprints</HostDir>
-      <ContainerDir>/library</ContainerDir>
-      <Mode>rw</Mode>
-    </Volume>
-  </Data>
-  <Environment/>
-  <Labels/>
-  <Config Name="WebUI Port" Target="3000" Default="3457" Mode="tcp" Description="The port for the GyroidVault web interface." Type="Port" Display="always" Required="true" Mask="false">3457</Config>
-  <Config Name="AppData" Target="/app/data" Default="/mnt/user/appdata/gyroidvault" Mode="rw" Description="Storage for database and settings." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/gyroidvault</Config>
-  <Config Name="3D Models Library" Target="/library" Default="/mnt/user/3Dprints" Mode="rw" Description="Path to your 3D models and prints library." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/3Dprints</Config>
-  <Config Name="PUID" Target="PUID" Default="99" Mode="" Description="User ID (PUID)." Type="Variable" Display="advanced" Required="false" Mask="false">99</Config>
-  <Config Name="PGID" Target="PGID" Default="99" Mode="" Description="Group ID (PGID)." Type="Variable" Display="advanced" Required="false" Mask="false">99</Config>
-  <Config Name="UMASK" Target="UMASK" Default="022" Mode="" Description="Umask value." Type="Variable" Display="advanced" Required="false" Mask="false">022</Config>
-  <Config Name="Timezone" Target="TZ" Default="Europe/Amsterdam" Mode="" Description="Container Timezone" Type="Variable" Display="advanced" Required="false" Mask="false">Europe/Amsterdam</Config>
-  <Config Name="Library Path (Internal)" Target="LIBRARY_PATH" Default="/library" Mode="" Description="Internal container path for the library. Must match the 3D Models Library Target path." Type="Variable" Display="advanced" Required="false" Mask="false">/library</Config>
+  <Config Name="WebUI Port" Target="3000" Default="3457" Mode="tcp" Description="The port for the GyroidVault web interface." Type="Port" Display="always" Required="true" Mask="false"/>
+  <Config Name="AppData" Target="/app/data" Default="/mnt/user/appdata/gyroidvault" Mode="rw" Description="Storage for database and settings." Type="Path" Display="always" Required="true" Mask="false"/>
+  <Config Name="3D Models Library" Target="/library" Default="/mnt/user/3Dprints" Mode="rw" Description="Path to your 3D models and prints library." Type="Path" Display="always" Required="true" Mask="false"/>
+  <Config Name="PUID" Target="PUID" Default="99" Mode="" Description="User ID (PUID)." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="PGID" Target="PGID" Default="100" Mode="" Description="Group ID (PGID)." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="UMASK" Target="UMASK" Default="022" Mode="" Description="Umask value." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Timezone" Target="TZ" Default="Europe/Amsterdam" Mode="" Description="Container Timezone" Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Library Path (Internal)" Target="LIBRARY_PATH" Default="/library" Mode="" Description="Internal container path for the library. Must match the 3D Models Library Target path." Type="Variable" Display="advanced" Required="false" Mask="false"/>
 </Container>
