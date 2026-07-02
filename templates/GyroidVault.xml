@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Container version="2">
   <Name>GyroidVault</Name>
-  <Version>v1.3.4</Version>
+  <Version>v1.4.0</Version>
   <Repository>ghcr.io/teecodedev/gyroidvault:latest</Repository>
   <Registry>https://ghcr.io/teecodedev/gyroidvault</Registry>
   <Network>bridge</Network>
@@ -17,8 +17,39 @@
   <Icon>https://raw.githubusercontent.com/TeeCodeDev/GyroidVault/main/public/icon.png</Icon>
   <ExtraParams/>
   <PostArgs/>
-  <Date>2026-06-13</Date>
+  <Date>2026-07-02</Date>
   <Changes>
+### v1.4.0 (2026-07-02)
+Welcome to version 1.4.0. This update focuses on integrating 3D printers, expanding customization, and bringing quality of life improvements to the library interface.
+
+## New Features
+
+- **New Application Theme:** We've introduced a brand new, polished theme! The updated visual design offers a more modern and cohesive look across the entire application, making your library look better than ever. You can even choose a highlight color!
+- **Custom Meta Boxes:** You can now add and manage custom metadata fields for your models. This gives you ultimate flexibility to track specific model details that matter most to your workflow.
+- **Extended G-Code Analysis:** We now extract much more data from your G-Code files. In addition to print time and weight, you can now view:
+  - Infill percentage and pattern
+  - Number of walls / Top & Bottom layers
+  - Nozzle and bed temperatures
+  - Print costs (based on your slicer configuration)
+  - Maximum volumetric speed
+  - The specific slicer used and the intended printer model
+- **Redesigned G-Code View:** The entire G-Code section in the model view has been redesigned. It is now conveniently located in the right column above the Print History, removing clutter from the file list.
+- **Library Grid / List Toggle:** We have added a Grid / List view toggle for the library. You can now easily switch between a large grid view and a compact list view. The application remembers your preference for future visits.
+
+## Moonraker / Klipper Integration (BETA)
+
+- **Printer Configuration:** You can now connect Klipper / Moonraker printers. The configuration form under **Settings -> Printers** has been repaired. You can add a Name, URL, and an optional API Key.
+- **1-Click Send to Printer:** If you have configured one or more printers, you can now click Send to Printer in the G-Code overview. A prompt will ask you to select the correct printer, and the file will be sent directly to the  directory of your machine.
+
+**Feedback Wanted:** Because I do not currently own a Moonraker/Klipper printer, the Send to Printer networking functionality was built blindly based on the official API documentation. Sending files including the API Key has been implemented, but I cannot test it locally. If sending to Klipper fails or if you encounter any errors, please let me know so we can fix it!
+
+## Bug Fixes
+- **UI Stability:** Resolved a bug where JavaScript template string errors caused the interface to crash completely.
+- **Dropdown Visibility:** Fixed a UI layout issue where a dropdown menu was incorrectly overlapping with other elements on the screen. #31 
+- **Port Configuration:** Corrected an issue with an incorrect port assignment that prevented proper connections. #33 
+- **File Management:** Resolved multiple edge-case issues related to editing and processing files. #32 
+- **Legacy Inline Data:** Removed old, duplicate in-line G-Code metadata from the files list to keep the interface clean.
+
 ### v1.3.4 (2026-06-13)
 ### What's New
 
