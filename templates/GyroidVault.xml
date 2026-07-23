@@ -1,23 +1,25 @@
 <?xml version="1.0"?>
 <Container version="2">
   <Name>GyroidVault</Name>
-  <Version>v1.3.4</Version>
+  <Version>v1.4.0</Version>
   <Repository>ghcr.io/teecodedev/gyroidvault:latest</Repository>
   <Registry>https://ghcr.io/teecodedev/gyroidvault</Registry>
   <Network>bridge</Network>
+  <MyPort>3457</MyPort>
   <Shell>sh</Shell>
   <Privileged>false</Privileged>
   <Support>https://forums.unraid.net/topic/198986-support-gyroidvault-3d-model-library-and-print-manager/</Support>
   <Project>https://github.com/TeeCodeDev/GyroidVault</Project>
   <Overview>GyroidVault is a modern, self-hosted 3D model library and print management platform. Organize your STL, 3MF, and Gcode files, track your print history, and manage your projects in a beautiful dashboard.</Overview>
-  <Category>Tools:Utilities, MediaServer:Other</Category>
-  <WebUI>http://[IP]:[PORT:3457]/</WebUI>
+  <Category>Tools:Utilities MediaServer:Other</Category>
+  <WebUI>http://[IP]:[PORT:3000]/</WebUI>
   <TemplateURL>https://raw.githubusercontent.com/TeeCodeDev/unraid-templates/main/templates/GyroidVault.xml</TemplateURL>
   <License>MIT</License>
   <Icon>https://raw.githubusercontent.com/TeeCodeDev/GyroidVault/main/public/icon.png</Icon>
   <ExtraParams/>
   <PostArgs/>
-  <Date>2026-06-13</Date>
+  <CPUset/>
+  <Date>2026-07-02</Date>
   <Changes>
 
 ### v1.4.0 (2026-07-02)  
@@ -88,6 +90,7 @@ This release brings highly requested features for better privacy, user managemen
 - Implemented a double-submit CSRF token system.
 - Added strict rate-limiting to prevent brute-force login attacks.
 - Integrated Helmet.js to enforce modern HTTP security policies.
+
 ### v1.2.2 (2026-05-28)
 - Minor bug fixes and stability improvements.
 

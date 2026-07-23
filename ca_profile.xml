@@ -4,10 +4,12 @@
   <Profile>
     Self-hosted, lightning-fast 3D printing and model management applications.
   </Profile>
+  <!-- Optional icon -->
+  <Icon>https://raw.githubusercontent.com/TeeCodeDev/GyroidVault/main/public/icon.png</Icon>
   <!-- Optional web page -->
-  <WebPage>https://github.com/TeeCodeDev/unraid-templates</WebPage>
-  <!-- Optional support and donation links -->
-  <Forum>https://github.com/TeeCodeDev/unraid-templates/issues</Forum>
+  <WebPage>https://github.com/TeeCodeDev/GyroidVault</WebPage>
+  <!-- Optional support link -->
+  <Forum>https://forums.unraid.net/topic/198986-support-gyroidvault-3d-model-library-and-print-manager/</Forum>
   <!-- Optional donation link -->
   <DonateLink>https://ko-fi.com/D1D51ZGUNL</DonateLink>
   <!-- Optional donation text -->
