@@ -22,6 +22,7 @@
   <Category>MediaServer:Other</Category>
 
   <!-- Optional changelog text -->
+  <Changes>
   ### v1.4.0 (2026-07-02)  
 Welcome to version 1.4.0. This update focuses on integrating 3D printers, expanding customization, and bringing quality of life improvements to the library interface.
 
@@ -31,7 +32,7 @@ Welcome to version 1.4.0. This update focuses on integrating 3D printers, expand
 - **Custom Meta Boxes:** You can now add and manage custom metadata fields for your models. This gives you ultimate flexibility to track specific model details that matter most to your workflow.
 - **Extended G-Code Analysis:** We now extract much more data from your G-Code files. In addition to print time and weight, you can now view:
   - Infill percentage and pattern
-  - Number of walls / Top & Bottom layers
+  - Number of walls / Top and Bottom layers
   - Nozzle and bed temperatures
   - Print costs (based on your slicer configuration)
   - Maximum volumetric speed
@@ -58,7 +59,7 @@ Welcome to version 1.4.0. This update focuses on integrating 3D printers, expand
 
 * Role-Based Access Control (RBAC): You can now assign users the role of Admin (full access), Uploader (can upload and manage their own models), or Viewer. Viewers have a clean, read-only experience where all edit/delete/upload buttons are automatically hidden. Note: The very first user on your instance (User ID 1) is automatically upgraded to Admin to ensure you're never locked out. All other existing users will default to the 'Uploader' role, meaning they won't lose any of their current upload permissions!
 
-* Bulk Selection &amp; Tagging (Flat Grid): You can now manage your models much faster in the Flat Grid view! Simply use Ctrl+Click (or Shift+Click) to select multiple models at once, Thanks to @MFA-G 
+* Bulk Selection; Tagging (Flat Grid): You can now manage your models much faster in the Flat Grid view! Simply use Ctrl+Click (or Shift+Click) to select multiple models at once, Thanks to @MFA-G 
 ### Bug Fixes
 * Nested Folder Collages: Fixed an issue where the new 2x2 folder collages were not rendering correctly for folders nested deep inside other directories. #30 
 * API Security: Enforced strict ownership checks across the board. Uploaders can now only modify, edit, or delete models that they have personally uploaded.
@@ -121,7 +122,7 @@ This update brings a highly requested Folder View mode and fixes several annoyin
 
 **Fixes:**
 - **Persistent navigation:** Clicking the back button from a model page now correctly remembers your current page and active filters.
-- **Scanner performance:** Adjusted the background scanner so it no longer freezes the web UI when processing massive libraries (e.g. 2TB+).
+- **Scanner performance:** Adjusted the background scanner so it no longer freezes the web UI when processing massive libraries .
 - Custom categories created in the settings now show up in menus immediately, without needing a container restart.
 - Fixed a small visual bug that sometimes caused the 'Open in Slicer' dropdown menu to disappear when hovering over it.
   </Changes>
