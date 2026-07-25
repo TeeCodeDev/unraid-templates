@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <CommunityApplications>
   <!-- Required profile -->
   <Profile>
@@ -7,8 +6,8 @@
   <!-- Optional icon -->
   <Icon>https://raw.githubusercontent.com/TeeCodeDev/GyroidVault/main/public/icon.png</Icon>
   <!-- Optional web page -->
-  <WebPage>https://github.com/TeeCodeDev/GyroidVault</WebPage>
-  <!-- Optional support link -->
+   <WebPage>https://github.com/TeeCodeDev/GyroidVault</WebPage>
+  <!-- Optional support and donation links -->
   <Forum>https://forums.unraid.net/topic/198986-support-gyroidvault-3d-model-library-and-print-manager/</Forum>
   <!-- Optional donation link -->
   <DonateLink>https://ko-fi.com/D1D51ZGUNL</DonateLink>
