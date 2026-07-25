@@ -1,28 +1,28 @@
-<?xml version="1.0"?>
 <Container version="2">
   <Name>GyroidVault</Name>
-  <Version>v1.4.0</Version>
   <Repository>ghcr.io/teecodedev/gyroidvault:latest</Repository>
   <Registry>https://ghcr.io/teecodedev/gyroidvault</Registry>
   <Network>bridge</Network>
-  <MyPort>3457</MyPort>
+
   <Shell>sh</Shell>
   <Privileged>false</Privileged>
-  <Support>https://forums.unraid.net/topic/198986-support-gyroidvault-3d-model-library-and-print-manager/</Support>
-  <Project>https://github.com/TeeCodeDev/GyroidVault</Project>
-  <Overview>GyroidVault is a modern, self-hosted 3D model library and print management platform. Organize your STL, 3MF, and Gcode files, track your print history, and manage your projects in a beautiful dashboard.</Overview>
-  <Category>Tools:Utilities MediaServer:Other</Category>
-  <WebUI>http://[IP]:[PORT:3000]/</WebUI>
-  <TemplateURL>https://raw.githubusercontent.com/TeeCodeDev/unraid-templates/main/templates/GyroidVault.xml</TemplateURL>
-  <License>MIT</License>
+  
   <Icon>https://raw.githubusercontent.com/TeeCodeDev/GyroidVault/main/public/icon.png</Icon>
-  <ExtraParams/>
-  <PostArgs/>
-  <CPUset/>
-  <Date>2026-07-02</Date>
-  <Changes>
 
-### v1.4.0 (2026-07-02)  
+  <WebUI>http://[IP]:[PORT:3000]</WebUI>
+  
+  <Overview>GyroidVault is a modern, self-hosted 3D model library and print management platform. Organize your STL, 3MF, and Gcode files, track your print history, and manage your projects in a beautiful dashboard.</Overview>
+
+  <Support>https://forums.unraid.net/topic/198986-support-gyroidvault-3d-model-library-and-print-manager/</Support>
+  
+  <Project>https://github.com/TeeCodeDev/GyroidVault</Project>
+
+  <TemplateURL>https://raw.githubusercontent.com/TeeCodeDev/unraid-templates/main/templates/GyroidVault.xml</TemplateURL>
+
+  <Category>MediaServer:Other</Category>
+
+  <!-- Optional changelog text -->
+  ### v1.4.0 (2026-07-02)  
 Welcome to version 1.4.0. This update focuses on integrating 3D printers, expanding customization, and bringing quality of life improvements to the library interface.
 
 ## New Features
@@ -125,8 +125,23 @@ This update brings a highly requested Folder View mode and fixes several annoyin
 - Custom categories created in the settings now show up in menus immediately, without needing a container restart.
 - Fixed a small visual bug that sometimes caused the 'Open in Slicer' dropdown menu to disappear when hovering over it.
   </Changes>
-  <DonateText/>
-  <DonateLink/>
+
+  <!-- Optional date (YYYY-MM-DD or YYYY-MM-DD HH:MM:SS) -->
+  <Date>2026-07-02</Date>
+  
+  <!-- Minimum and maximum Unraid version.-->
+  <MinVer>6.1</MinVer>
+  <MaxVer>7.3</MaxVer>
+
+  <License>MIT</License>
+
+  <Screenshot>https://github.com/TeeCodeDev/GyroidVault/blob/main/screenshots/GyroidVault-Collection_page.png</Screenshot>
+  <Screenshot>https://github.com/TeeCodeDev/GyroidVault/blob/main/screenshots/GyroidVault-Dashboard_page.png</Screenshot>
+  <Screenshot>https://github.com/TeeCodeDev/GyroidVault/blob/main/screenshots/GyroidVault-Models_page.png</Screenshot>
+  <Screenshot>https://github.com/TeeCodeDev/GyroidVault/blob/main/screenshots/GyroidVault-Settings_page.png</Screenshot>
+  <Screenshot>https://github.com/TeeCodeDev/GyroidVault/blob/main/screenshots/GyroidVault-Single_model_page.png</Screenshot>
+  
+  <!-- v2 templates should define ports/paths/variables with Config entries -->
   <Config Name="WebUI Port" Target="3000" Default="3457" Mode="tcp" Description="The port for the GyroidVault web interface." Type="Port" Display="always" Required="true" Mask="false"/>
   <Config Name="AppData" Target="/app/data" Default="/mnt/user/appdata/gyroidvault" Mode="rw" Description="Storage for database and settings." Type="Path" Display="always" Required="true" Mask="false"/>
   <Config Name="3D Models Library" Target="/library" Default="/mnt/user/3Dprints" Mode="rw" Description="Path to your 3D models and prints library." Type="Path" Display="always" Required="true" Mask="false"/>
