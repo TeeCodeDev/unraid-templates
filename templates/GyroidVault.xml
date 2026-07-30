@@ -3,24 +3,15 @@
   <Repository>ghcr.io/teecodedev/gyroidvault:latest</Repository>
   <Registry>https://ghcr.io/teecodedev/gyroidvault</Registry>
   <Network>bridge</Network>
-
   <Shell>sh</Shell>
   <Privileged>false</Privileged>
-  
   <Icon>https://raw.githubusercontent.com/TeeCodeDev/GyroidVault/main/public/icon.png</Icon>
-
   <WebUI>http://[IP]:[PORT:3000]</WebUI>
-  
   <Overview>GyroidVault is a modern, self-hosted 3D model library and print management platform. Organize your STL, 3MF, and Gcode files, track your print history, and manage your projects in a beautiful dashboard.</Overview>
-
   <Support>https://forums.unraid.net/topic/198986-support-gyroidvault-3d-model-library-and-print-manager/</Support>
-  
   <Project>https://github.com/TeeCodeDev/GyroidVault</Project>
-
   <TemplateURL>https://raw.githubusercontent.com/TeeCodeDev/unraid-templates/main/templates/GyroidVault.xml</TemplateURL>
-
   <Category>MediaServer:Other</Category>
-
   <!-- Optional changelog text -->
   <Changes>
   ### v1.4.0 (2026-07-02)  
@@ -125,17 +116,9 @@ This update brings a highly requested Folder View mode and fixes several annoyin
 - **Scanner performance:** Adjusted the background scanner so it no longer freezes the web UI when processing massive libraries .
 - Custom categories created in the settings now show up in menus immediately, without needing a container restart.
 - Fixed a small visual bug that sometimes caused the 'Open in Slicer' dropdown menu to disappear when hovering over it.
-  </Changes>
-
-  <!-- Optional date (YYYY-MM-DD or YYYY-MM-DD HH:MM:SS) -->
-  <Date>2026-07-02</Date>
   
-  <!-- Minimum and maximum Unraid version.-->
-  <MinVer>6.1</MinVer>
-  <MaxVer>7.3</MaxVer>
-
+  </Changes>
   <License>MIT</License>
-
   <Screenshot>https://github.com/TeeCodeDev/GyroidVault/blob/main/screenshots/GyroidVault-Collection_page.png</Screenshot>
   <Screenshot>https://github.com/TeeCodeDev/GyroidVault/blob/main/screenshots/GyroidVault-Dashboard_page.png</Screenshot>
   <Screenshot>https://github.com/TeeCodeDev/GyroidVault/blob/main/screenshots/GyroidVault-Models_page.png</Screenshot>
