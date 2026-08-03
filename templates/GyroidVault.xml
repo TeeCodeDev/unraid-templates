@@ -20,10 +20,10 @@
 ## New Features
 
 - **Interactive 3D G-Code Layer Inspection:** You can now inspect parsed G-Code files layer by layer directly in your browser! The built-in 3D viewer features an interactive layer slider showing real-time layer numbers (`Layer X / Y`) and live Z-height readouts in mm.
-- **Dynamic Build Volume Grid & Filament Colors:** The G-code 3D previewer automatically detects your printer model from metadata and resizes the build volume grid accordingly. 
+- **Dynamic Build Volume Grid and Filament Colors:** The G-code 3D previewer automatically detects your printer model from metadata and resizes the build volume grid accordingly. 
 - **Auto-Centered 3D Camera Framing:** The 3D camera automatically calculates the exact bounding box of parsed G-Code models, centering the camera target and framing the view perfectly regardless of slicer bed offsets.
 - **Duplicate File Finder:** A brand new duplicate model scanner under **Settings -> Maintenance**. It uses SHA-256 file hashing to quickly discover duplicate STL, 3MF, or G-Code files across your library.
-- **IP Auto-Block & Rate-Limit Management:** Administrators can now monitor IP addresses flagged for failed login attempts under **Settings -> Security** and unblock them with a single click without restarting the server.
+- **IP Auto-Block and Rate-Limit Management:** Administrators can now monitor IP addresses flagged for failed login attempts under **Settings -> Security** and unblock them with a single click without restarting the server.
 - **Redesigned Settings Tabs:** The settings area has been reorganized with dedicated **Security** and **Maintenance** tabs, featuring modern toggle switches for Open Registration and Private Instance Mode.
 - **Global Search Shortcut (`Ctrl + K` / `Cmd + K`):** Easily trigger the global search bar from anywhere in the application by pressing `Ctrl+K` on Windows/Linux or `Cmd+K` on macOS.
 - **Smart Printer UI:** The "Send to Printer" button now cleanly hides itself when no printers are configured, preventing unnecessary clicks.
