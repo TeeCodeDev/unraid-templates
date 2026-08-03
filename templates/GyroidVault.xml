@@ -14,7 +14,26 @@
   <Category>MediaServer:Other</Category>
   <!-- Optional changelog text -->
   <Changes>
-  ### v1.4.0 (2026-07-02)  
+
+###Welcome to version 1.4.1. This update introduces interactive 3D G-code layer slicing inspection, dynamic build plate scaling, IP rate-limit administration, duplicate file detection, and redesigned security and maintenance panels.
+
+## New Features
+
+- **Interactive 3D G-Code Layer Inspection:** You can now inspect parsed G-Code files layer by layer directly in your browser! The built-in 3D viewer features an interactive layer slider showing real-time layer numbers (`Layer X / Y`) and live Z-height readouts in mm.
+- **Dynamic Build Volume Grid & Filament Colors:** The G-code 3D previewer automatically detects your printer model from metadata and resizes the build volume grid accordingly. 
+- **Auto-Centered 3D Camera Framing:** The 3D camera automatically calculates the exact bounding box of parsed G-Code models, centering the camera target and framing the view perfectly regardless of slicer bed offsets.
+- **Duplicate File Finder:** A brand new duplicate model scanner under **Settings -> Maintenance**. It uses SHA-256 file hashing to quickly discover duplicate STL, 3MF, or G-Code files across your library.
+- **IP Auto-Block & Rate-Limit Management:** Administrators can now monitor IP addresses flagged for failed login attempts under **Settings -> Security** and unblock them with a single click without restarting the server.
+- **Redesigned Settings Tabs:** The settings area has been reorganized with dedicated **Security** and **Maintenance** tabs, featuring modern toggle switches for Open Registration and Private Instance Mode.
+- **Global Search Shortcut (`Ctrl + K` / `Cmd + K`):** Easily trigger the global search bar from anywhere in the application by pressing `Ctrl+K` on Windows/Linux or `Cmd+K` on macOS.
+- **Smart Printer UI:** The "Send to Printer" button now cleanly hides itself when no printers are configured, preventing unnecessary clicks.
+
+## Bug Fixes
+
+- **Terabyte Library Size Formatting:** Fixed a formatting issue where library storage sizes exceeding 1 TB were displayed as `"1.1 undefined"`. Units now correctly support TB and PB scale.
+- **Deletion Security Guards:** Enforced strict authentication and role-based guards on model and file deletion API endpoints to prevent unauthorized actions.    
+  
+    ### v1.4.0 (2026-07-02)  
 Welcome to version 1.4.0. This update focuses on integrating 3D printers, expanding customization, and bringing quality of life improvements to the library interface.
 
 ## New Features
@@ -119,11 +138,11 @@ This update brings a highly requested Folder View mode and fixes several annoyin
   
   </Changes>
   <License>MIT</License>
-  <Screenshot>https://github.com/TeeCodeDev/GyroidVault/blob/main/screenshots/GyroidVault-Collection_page.png</Screenshot>
-  <Screenshot>https://github.com/TeeCodeDev/GyroidVault/blob/main/screenshots/GyroidVault-Dashboard_page.png</Screenshot>
-  <Screenshot>https://github.com/TeeCodeDev/GyroidVault/blob/main/screenshots/GyroidVault-Models_page.png</Screenshot>
-  <Screenshot>https://github.com/TeeCodeDev/GyroidVault/blob/main/screenshots/GyroidVault-Settings_page.png</Screenshot>
-  <Screenshot>https://github.com/TeeCodeDev/GyroidVault/blob/main/screenshots/GyroidVault-Single_model_page.png</Screenshot>
+  <Screenshot>https://github.com/TeeCodeDev/GyroidVault/blob/main/screenshots/GyroidVault-Dashboard_page.png?raw=true</Screenshot>
+  <Screenshot>https://github.com/TeeCodeDev/GyroidVault/blob/main/screenshots/GyroidVault-Models_page.png?raw=true</Screenshot>
+  <Screenshot>https://github.com/TeeCodeDev/GyroidVault/blob/main/screenshots/GyroidVault-Single_model_page.png?raw=true</Screenshot>
+  <Screenshot>https://github.com/TeeCodeDev/GyroidVault/blob/main/screenshots/GyroidVault-Collection_page.png?raw=true</Screenshot>
+  <Screenshot>https://github.com/TeeCodeDev/GyroidVault/blob/main/screenshots/GyroidVault-Settings_page.png?raw=true</Screenshot>
   
   <!-- v2 templates should define ports/paths/variables with Config entries -->
   <Config Name="WebUI Port" Target="3000" Default="3457" Mode="tcp" Description="The port for the GyroidVault web interface." Type="Port" Display="always" Required="true" Mask="false"/>
