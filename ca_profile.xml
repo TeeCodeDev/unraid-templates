@@ -1,13 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
 <CommunityApplications>
   <!-- Required profile -->
   <Profile>
     Self-hosted, lightning-fast 3D printing and model management applications.
   </Profile>
   <!-- Optional icon -->
-  <Icon>https://raw.githubusercontent.com/TeeCodeDev/GyroidVault/main/public/icon.png</Icon>
+  <Icon>https://raw.githubusercontent.com/TeeCodeDev/GyroidVault/main/public/icon.png?v=2</Icon>
   <!-- Optional web page -->
-   <WebPage>https://github.com/TeeCodeDev/GyroidVault</WebPage>
-  <!-- Optional support and donation links -->
+  <WebPage>https://github.com/TeeCodeDev/GyroidVault</WebPage>
+  <!-- Optional support link -->
   <Forum>https://forums.unraid.net/topic/198986-support-gyroidvault-3d-model-library-and-print-manager/</Forum>
   <!-- Optional donation link -->
   <DonateLink>https://ko-fi.com/D1D51ZGUNL</DonateLink>
