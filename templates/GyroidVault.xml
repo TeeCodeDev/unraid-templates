@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Container version="2">
   <Name>GyroidVault</Name>
-  <Version>v2.0.0</Version>
+  <Version>v2.0.1</Version>
   <Repository>ghcr.io/teecodedev/gyroidvault:latest</Repository>
   <Registry>https://ghcr.io/teecodedev/gyroidvault</Registry>
   <Network>bridge</Network>
@@ -21,7 +21,7 @@
   <ExtraParams/>
   <PostArgs/>
   <CPUset/>
-  <Date>2026-09-11</Date>
+  <Date>2026-09-12</Date>
   <Screenshot>https://raw.githubusercontent.com/TeeCodeDev/GyroidVault/main/screenshots/library-grid.png</Screenshot>
   <Screenshot>https://raw.githubusercontent.com/TeeCodeDev/GyroidVault/main/screenshots/studio-model-detail.png</Screenshot>
   <Screenshot>https://raw.githubusercontent.com/TeeCodeDev/GyroidVault/main/screenshots/studio-pawn.png</Screenshot>
@@ -29,22 +29,25 @@
   <DonateText>If you like GyroidVault, buy me a coffee!</DonateText>
   <DonateLink>https://ko-fi.com/D1D51ZGUNL</DonateLink>
   <Changes>
-<![CDATA[
+### v2.0.1 (2026-09-12)
+- **Cover Image Selection:** Set any uploaded image as the primary cover thumbnail for your models directly from the gallery with 1 click.
+- **Storage Calculation Fix:** Fixed an SQLite aggregate query bug that caused library disk usage and storage totals to display incorrectly (#56).
+
 ### v2.0.0 (2026-09-11)  
 Welcome to version 2.0.0! This major release completely reimagines the model exploration experience with a calm 2-column Studio layout, an interactive 3D multi-part assembly viewer, physical millimeter dimension measurements, background library scanning for 2TB+ collections, in-archive inspection for ZIP files, and major security hardening.
 
 ## New Features
-- **Studio 2.0 & Multi-Part Assembly:** View single files or toggle "All Parts Combined" in the 3D viewer to render all STLs/3MFs of a multi-part model simultaneously on the virtual build plate in contrasting colors.
+- **Studio 2.0 &amp; Multi-Part Assembly:** View single files or toggle "All Parts Combined" in the 3D viewer to render all STLs/3MFs of a multi-part model simultaneously on the virtual build plate in contrasting colors.
 - **Physical Millimeter Dimensions:** The 3D viewer measures and displays the exact physical bounding box (W × D × H mm) in real time so you know the scale before opening your slicer.
 - **Background Scanner for Massive Libraries (2TB+):** Non-blocking background worker with live UI progress counters and memory safety guards, designed to index 50k+ file collections without locking SQLite or freezing the web UI.
 - **Inspects Inside ZIP Files:** Index and stream STLs, 3MFs, PDFs, and images packed inside ZIP archives without needing to extract folders to your disk.
-- **Dynamic 2x2 Collection Collages & 1-Click ZIP:** Group models into projects or folders with visual collage previews, and download entire collections as a single streaming ZIP.
+- **Dynamic 2x2 Collection Collages &amp; 1-Click ZIP:** Group models into projects or folders with visual collage previews, and download entire collections as a single streaming ZIP.
 - **OpenSCAD (.scad) Support:** Added native recognition, organization, and badges for OpenSCAD (.scad) files alongside STL, 3MF, and STEP.
-- **Slicer Launch & Printer Integration:** 1-click launch to open models directly into Bambu Studio, OrcaSlicer, or PrusaSlicer, or send sliced G-Codes straight to your Moonraker/Klipper printers.
-- **Filament Swatches & Shading Modes:** Preview models in 7 material colors, Wireframe mode, X-Ray mode, and set your favorite camera angle as the cover thumbnail with 1 click.
+- **Slicer Launch &amp; Printer Integration:** 1-click launch to open models directly into Bambu Studio, OrcaSlicer, or PrusaSlicer, or send sliced G-Codes straight to your Moonraker/Klipper printers.
+- **Filament Swatches &amp; Shading Modes:** Preview models in 7 material colors, Wireframe mode, X-Ray mode, and set your favorite camera angle as the cover thumbnail with 1 click.
 - **Power Batch Editing:** Bulk tagging, category moves, and collection management across multiple models.
 
-## Bug Fixes & Improvements
+## Bug Fixes &amp; Improvements
 - **Modal Drag-Outside Protection:** Fixed mouse boundary issue where rotating 3D models or selecting text triggered accidental modal dismissals.
 - **Collection File Count Fix:** Resolved an issue where models displayed inside a collection falsely showed 0 files (#53).
 - **Duplicate Name Handling:** Returns clear 409 Conflict with smart name suggestions instead of 500 server error (#48).
@@ -108,7 +111,7 @@ Welcome to version 1.4.0. This update focuses on integrating 3D printers, expand
 
 ### v1.3.4 (2026-06-13)
 - **Role-Based Access Control (RBAC):** Admin, Uploader, and Viewer roles.
-- **Bulk Selection & Tagging:** Select multiple models with Ctrl+Click or Shift+Click.
+- **Bulk Selection &amp; Tagging:** Select multiple models with Ctrl+Click or Shift+Click.
 - **Bug Fixes:** Nested folder collage rendering and API security ownership guards.
 
 ### v1.3.3 (2026-06-09)
@@ -139,7 +142,6 @@ Welcome to version 1.4.0. This update focuses on integrating 3D printers, expand
 
 ### v1.1.0 (2026-05-23)
 - Folder View introduction and scanner performance optimizations.
-]]>
   </Changes>
   <Config Name="WebUI Port" Target="3000" Default="3457" Mode="tcp" Description="The port for the GyroidVault web interface." Type="Port" Display="always" Required="true" Mask="false"/>
   <Config Name="AppData" Target="/app/data" Default="/mnt/user/appdata/gyroidvault" Mode="rw" Description="Storage for database and settings." Type="Path" Display="always" Required="true" Mask="false"/>
