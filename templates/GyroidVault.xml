@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Container version="2">
   <Name>GyroidVault</Name>
-  <Version>v2.0.0</Version>
+  <Version>v2.0.1</Version>
   <Repository>ghcr.io/teecodedev/gyroidvault:latest</Repository>
   <Registry>https://ghcr.io/teecodedev/gyroidvault</Registry>
   <Network>bridge</Network>
@@ -21,7 +21,7 @@
   <ExtraParams/>
   <PostArgs/>
   <CPUset/>
-  <Date>2026-09-11</Date>
+  <Date>2026-09-12</Date>
   <Screenshot>https://raw.githubusercontent.com/TeeCodeDev/GyroidVault/main/screenshots/library-grid.png</Screenshot>
   <Screenshot>https://raw.githubusercontent.com/TeeCodeDev/GyroidVault/main/screenshots/studio-model-detail.png</Screenshot>
   <Screenshot>https://raw.githubusercontent.com/TeeCodeDev/GyroidVault/main/screenshots/studio-pawn.png</Screenshot>
@@ -29,6 +29,13 @@
   <DonateText>If you like GyroidVault, buy me a coffee!</DonateText>
   <DonateLink>https://ko-fi.com/D1D51ZGUNL</DonateLink>
   <Changes>
+### v2.0.1 (2026-09-12)
+A quick hotfix release addressing two community-reported issues following the v2.0.0 launch:
+
+- Fix Collection Crash (no such column: size): Fixed a query typo (SUM(size) -> SUM(file_size)) when fetching collection details that caused an HTTP 500 error and prevented models from displaying in collections (#56).
+
+- Set Uploaded Images as Cover: Added the missing Set as Cover action button for uploaded photos and renders in the model files list, allowing users to choose an image file as the primary gallery thumbnail instead of a 3D snapshot.
+
 <![CDATA[
 ### v2.0.0 (2026-09-11)  
 Welcome to version 2.0.0! This major release completely reimagines the model exploration experience with a calm 2-column Studio layout, an interactive 3D multi-part assembly viewer, physical millimeter dimension measurements, background library scanning for 2TB+ collections, in-archive inspection for ZIP files, and major security hardening.
