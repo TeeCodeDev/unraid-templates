@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Container version="2">
   <Name>GyroidVault</Name>
-  <Version>v2.0.1</Version>
+  <Version>v2.0.2</Version>
   <Repository>ghcr.io/teecodedev/gyroidvault:latest</Repository>
   <Registry>https://ghcr.io/teecodedev/gyroidvault</Registry>
   <Network>bridge</Network>
@@ -21,7 +21,7 @@
   <ExtraParams/>
   <PostArgs/>
   <CPUset/>
-  <Date>2026-09-12</Date>
+  <Date>2026-09-13</Date>
   <Screenshot>https://raw.githubusercontent.com/TeeCodeDev/GyroidVault/main/screenshots/library-grid.png</Screenshot>
   <Screenshot>https://raw.githubusercontent.com/TeeCodeDev/GyroidVault/main/screenshots/studio-model-detail.png</Screenshot>
   <Screenshot>https://raw.githubusercontent.com/TeeCodeDev/GyroidVault/main/screenshots/studio-pawn.png</Screenshot>
@@ -29,11 +29,16 @@
   <DonateText>If you like GyroidVault, buy me a coffee!</DonateText>
   <DonateLink>https://ko-fi.com/D1D51ZGUNL</DonateLink>
   <Changes>
+### v2.0.2 (2026-09-13)
+- **Folder Browser Performance (100% CPU Fix):** Eliminated full-table in-memory scans and nested loops when browsing folders (#59). Replaced with indexed SQLite queries, dropping directory load times to &lt;1ms.
+- **Duplicate Scanner Memory Safety (OOM Fix):** Replaced synchronous file loading with chunk-streaming SHA-256 hashing (#58). Memory usage during scans is locked to &lt;1MB regardless of file size, preventing Docker OOM crashes on multi-GB files.
+- **Structured Server Logging for Unraid:** Added timestamped, categorized console output ([YYYY-MM-DD HH:mm:ss]), HTTP request latency logging, background job progress tracking, and global crash handlers for complete diagnostics in Unraid container logs.
+
 ### v2.0.1 (2026-09-12)
 - **Cover Image Selection:** Set any uploaded image as the primary cover thumbnail for your models directly from the gallery with 1 click.
 - **Storage Calculation Fix:** Fixed an SQLite aggregate query bug that caused library disk usage and storage totals to display incorrectly (#56).
 
-### v2.0.0 (2026-09-11)  
+### v2.0.0 (2026-09-11)  
 Welcome to version 2.0.0! This major release completely reimagines the model exploration experience with a calm 2-column Studio layout, an interactive 3D multi-part assembly viewer, physical millimeter dimension measurements, background library scanning for 2TB+ collections, in-archive inspection for ZIP files, and major security hardening.
 
 ## New Features
