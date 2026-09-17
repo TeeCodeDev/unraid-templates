@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Container version="2">
   <Name>GyroidVault</Name>
-  <Version>v2.0.2</Version>
+  <Version>v2.1.0</Version>
   <Repository>ghcr.io/teecodedev/gyroidvault:latest</Repository>
   <Registry>https://ghcr.io/teecodedev/gyroidvault</Registry>
   <Network>bridge</Network>
@@ -21,7 +21,7 @@
   <ExtraParams/>
   <PostArgs/>
   <CPUset/>
-  <Date>2026-09-13</Date>
+  <Date>2026-09-17</Date>
   <Screenshot>https://raw.githubusercontent.com/TeeCodeDev/GyroidVault/main/screenshots/library-grid.png</Screenshot>
   <Screenshot>https://raw.githubusercontent.com/TeeCodeDev/GyroidVault/main/screenshots/studio-model-detail.png</Screenshot>
   <Screenshot>https://raw.githubusercontent.com/TeeCodeDev/GyroidVault/main/screenshots/studio-pawn.png</Screenshot>
@@ -29,6 +29,19 @@
   <DonateText>If you like GyroidVault, buy me a coffee!</DonateText>
   <DonateLink>https://ko-fi.com/D1D51ZGUNL</DonateLink>
   <Changes>
+### v2.1.0 (2026-09-17)
+A release packed with community contributions and requested fixes!
+
+### ✨ What's New
+- **STEP / STP 3D Viewer (#62):** You can now view  and  CAD models directly in the 3D viewer. Powered by WebAssembly (OpenCASCADE) in a background Web Worker so the interface stays snappy. Big thanks to @zampierilucas!
+- **Bambu Studio Integration (#61):** Added Bambu Studio to the slicer options. GyroidVault automatically packages STLs into 3MF on-the-fly so Bambu Studio opens them directly via . Thanks to @zampierilucas!
+- **Fusion 360 (.f3d) Thumbnails (#60):** GyroidVault now automatically extracts the embedded rendered preview from your  files upon upload or library scan. Thanks to @zampierilucas!
+
+### 🐛 Fixes & Improvements
+- **Collection Modal Crash (#64):** Fixed the  error when adding models to collections.
+- **Login with Username or Email (#63):** You can now log in using either your username or email address, with whitespace trimming and case-insensitivity.
+
+
 ### v2.0.2 (2026-09-13)
 - **Folder Browser Performance (100% CPU Fix):** Eliminated full-table in-memory scans and nested loops when browsing folders (#59). Replaced with indexed SQLite queries, dropping directory load times to &lt;1ms.
 - **Duplicate Scanner Memory Safety (OOM Fix):** Replaced synchronous file loading with chunk-streaming SHA-256 hashing (#58). Memory usage during scans is locked to &lt;1MB regardless of file size, preventing Docker OOM crashes on multi-GB files.
