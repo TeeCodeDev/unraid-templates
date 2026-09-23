@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Container version="2">
   <Name>GyroidVault</Name>
-  <Version>v2.0.2</Version>
+  <Version>v2.1.1</Version>
   <Repository>ghcr.io/teecodedev/gyroidvault:latest</Repository>
   <Registry>https://ghcr.io/teecodedev/gyroidvault</Registry>
   <Network>bridge</Network>
@@ -21,7 +21,7 @@
   <ExtraParams/>
   <PostArgs/>
   <CPUset/>
-  <Date>2026-09-13</Date>
+  <Date>2026-09-23</Date>
   <Screenshot>https://raw.githubusercontent.com/TeeCodeDev/GyroidVault/main/screenshots/library-grid.png</Screenshot>
   <Screenshot>https://raw.githubusercontent.com/TeeCodeDev/GyroidVault/main/screenshots/studio-model-detail.png</Screenshot>
   <Screenshot>https://raw.githubusercontent.com/TeeCodeDev/GyroidVault/main/screenshots/studio-pawn.png</Screenshot>
@@ -29,6 +29,23 @@
   <DonateText>If you like GyroidVault, buy me a coffee!</DonateText>
   <DonateLink>https://ko-fi.com/D1D51ZGUNL</DonateLink>
   <Changes>
+### v2.1.1 (2026-09-23)
+This maintenance release brings massive speed improvements for large libraries, fixes a loop with ZIP archive indexing, and polishes authorization and viewer controls.
+
+### ⚡ Performance & Scalability
+
+- **1000x Faster All Models Loading (#67):** Optimized  by eliminating 7 correlated subqueries in the initial query that were being computed before pagination limits. Page load times on libraries with 20k+ models / 180k+ files dropped from 70–80+ seconds to <80ms. Thanks to @sparsematrix!
+- **Library Sync Optimization & Reduced Disk I/O (#67):**  now processes disk checks in concurrent batches with an active re-entrancy guard, batches deletes into a single database save, and runs hourly instead of every 5 minutes. Prevents event-loop starvation and eliminates hundreds of gigabytes of idle disk writes. Thanks to @sparsematrix!
+
+### 🐛 Bug Fixes & Improvements
+
+- **ZIP Archive Loop Fix & Setting (#69):** Fixed an issue where virtual entries inside  archives were deleted by the disk sync because they were not found as physical files on disk, causing them to be continuously re-scanned and re-deleted. Added a system setting in General Settings to toggle whether  files should be deep-scanned or indexed as regular files.
+- **Unauthorized Bulk Delete Fix (#69):** Prevented unauthenticated visitors or viewers from seeing selection checkboxes or triggering bulk delete dialogs. Fixed  so HTTP 401 Unauthorized responses properly reject with an error instead of falsely reporting success.
+- **3D Viewer Fullscreen Glitch (#66):** Fixed layout jumping and footer visibility issues when entering/leaving fullscreen 3D studio mode.
+- **Docker Image Version Display (#66, #69):** Resolved version discrepancy in Docker builds so the application properly reports the running version and eliminates false update banners.
+
+
+
 ### v2.0.2 (2026-09-13)
 - **Folder Browser Performance (100% CPU Fix):** Eliminated full-table in-memory scans and nested loops when browsing folders (#59). Replaced with indexed SQLite queries, dropping directory load times to &lt;1ms.
 - **Duplicate Scanner Memory Safety (OOM Fix):** Replaced synchronous file loading with chunk-streaming SHA-256 hashing (#58). Memory usage during scans is locked to &lt;1MB regardless of file size, preventing Docker OOM crashes on multi-GB files.
