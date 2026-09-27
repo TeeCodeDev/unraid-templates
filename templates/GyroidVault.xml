@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Container version="2">
   <Name>GyroidVault</Name>
-  <Version>v2.0.2</Version>
+  <Version>v2.2.0</Version>
   <Repository>ghcr.io/teecodedev/gyroidvault:latest</Repository>
   <Registry>https://ghcr.io/teecodedev/gyroidvault</Registry>
   <Network>bridge</Network>
@@ -21,7 +21,7 @@
   <ExtraParams/>
   <PostArgs/>
   <CPUset/>
-  <Date>2026-09-13</Date>
+  <Date>2026-09-27</Date>
   <Screenshot>https://raw.githubusercontent.com/TeeCodeDev/GyroidVault/main/screenshots/library-grid.png</Screenshot>
   <Screenshot>https://raw.githubusercontent.com/TeeCodeDev/GyroidVault/main/screenshots/studio-model-detail.png</Screenshot>
   <Screenshot>https://raw.githubusercontent.com/TeeCodeDev/GyroidVault/main/screenshots/studio-pawn.png</Screenshot>
@@ -29,6 +29,24 @@
   <DonateText>If you like GyroidVault, buy me a coffee!</DonateText>
   <DonateLink>https://ko-fi.com/D1D51ZGUNL</DonateLink>
   <Changes>
+### v2.2.0 (2026-09-27)
+- **Quick Format Filter Pills &amp; Clickable Badges:** Added instant format filter pills (All, STL, 3MF, STEP, G-Code, OBJ) to the library toolbar, clickable format badges on model cards, and a live library model/storage summary counter.
+- **Bulk Category Assignment:** Added a Category action button to the floating multi-select bar in both All Models and Folder Explorer (Browse) to assign or clear categories across multiple selected items at once.
+- **ZIP Archive Scan Setting Toggle Fix (#70):** Fixed the missing toggle switch on Scan &amp; Index ZIP Archives in Settings -&gt; General and added instant auto-save with toast confirmation feedback for system toggles.
+- **Modular Backend &amp; Health Check Endpoint:** Refactored the server into modular Express routers and centralized configuration, and added a lightweight /healthz container health check endpoint.
+
+### v2.1.1 (2026-09-23)
+- **1000x Faster All Models Loading (#67):** Eliminated correlated subqueries in /api/models before pagination limits, dropping page load times on 20k+ model / 180k+ file libraries from 70s+ to &lt;80ms.
+- **Library Sync Optimization &amp; Reduced Disk I/O (#67):** syncLibraryWithDisk now processes disk checks in concurrent batches with a re-entrancy guard and runs hourly instead of every 5 minutes, eliminating idle disk writes.
+- **ZIP Archive Loop Fix &amp; Setting (#69):** Prevented virtual entries inside .zip archives from being deleted during disk sync, and added a General Settings toggle to enable or disable deep .zip archive scanning.
+- **Unauthorized Bulk Delete Fix (#69) &amp; Fullscreen Viewer Fix (#66):** Hid selection checkboxes for unauthenticated viewers and fixed 3D viewer fullscreen layout glitches.
+
+### v2.1.0 (2026-09-17)
+- **STEP / STP 3D Viewer (#62):** View .step and .stp parametric CAD models directly in the 3D viewer via WebAssembly (OpenCASCADE) in a background Web Worker.
+- **Bambu Studio Integration (#61):** Added Bambu Studio slicer support with automatic on-the-fly 3MF packaging for bambustudio:// deep-linking.
+- **Fusion 360 (.f3d) Thumbnails (#60):** Automatically extracts embedded preview thumbnails from .f3d files during upload or library scan.
+- **Collection Modal &amp; Login Improvements (#63, #64):** Added multi-select checkboxes with search filter when adding models to collections, and support for logging in with either username or email.
+
 ### v2.0.2 (2026-09-13)
 - **Folder Browser Performance (100% CPU Fix):** Eliminated full-table in-memory scans and nested loops when browsing folders (#59). Replaced with indexed SQLite queries, dropping directory load times to &lt;1ms.
 - **Duplicate Scanner Memory Safety (OOM Fix):** Replaced synchronous file loading with chunk-streaming SHA-256 hashing (#58). Memory usage during scans is locked to &lt;1MB regardless of file size, preventing Docker OOM crashes on multi-GB files.
