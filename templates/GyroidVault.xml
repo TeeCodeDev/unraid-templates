@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Container version="2">
   <Name>GyroidVault</Name>
-  <Version>v2.2.0</Version>
+  <Version>v2.2.1</Version>
   <Repository>ghcr.io/teecodedev/gyroidvault:latest</Repository>
   <Registry>https://ghcr.io/teecodedev/gyroidvault</Registry>
   <Network>bridge</Network>
@@ -21,7 +21,7 @@
   <ExtraParams/>
   <PostArgs/>
   <CPUset/>
-  <Date>2026-09-27</Date>
+  <Date>2026-09-30</Date>
   <Screenshot>https://raw.githubusercontent.com/TeeCodeDev/GyroidVault/main/screenshots/library-grid.png</Screenshot>
   <Screenshot>https://raw.githubusercontent.com/TeeCodeDev/GyroidVault/main/screenshots/studio-model-detail.png</Screenshot>
   <Screenshot>https://raw.githubusercontent.com/TeeCodeDev/GyroidVault/main/screenshots/studio-pawn.png</Screenshot>
@@ -29,6 +29,29 @@
   <DonateText>If you like GyroidVault, buy me a coffee!</DonateText>
   <DonateLink>https://ko-fi.com/D1D51ZGUNL</DonateLink>
   <Changes>
+### v2.2.1 (2026-09-30)
+This release resolves several user-reported issues from v2.2.0, adds a one-click **Download All (.zip)** button on model detail pages, improves search and filter ergonomics, and introduces an automated pre-release verification suite.
+
+### ? New Features & UI Enhancements
+
+- **Download All Model Files as ZIP (#75):** Added a **Download All (.zip)** button to the Files header on both the authenticated Model Detail view and Public Share Links (), bundling all physical and nested archive files of a model into a single  download.
+- **Expanded Search by Tag, Category & Collection (#73):** The search bar now matches models by **Tag name**, **Category name**, and **Collection name** in addition to model name and description?working seamlessly across both the **All Models** grid and the **Folder Explorer** ().
+- **Clickable Category & Tag Badges (#73):** Category badges and tag pills on model cards and the model detail header are now clickable to immediately filter the library by that category or tag.
+- **Automatic Format Filter Reset on Category Change (#76):** Switching categories via the sidebar navigation or the toolbar dropdown now automatically resets the active format filter pill back to , preventing empty views when the previously selected file format does not exist in the newly selected category.
+
+### ?? Bug Fixes
+
+- **Scanner Zero-File Models & Database Foreign Keys Fix (#74):**
+  - Fixed a subtle  behavior where  reset  to , which could leave orphaned  rows in SQLite after deleting a model and cause subsequent library scans of the same directory to skip existing files and create  model entries.
+  - Added automatic startup and background-sync self-healing to purge any orphaned child records and re-link existing file records cleanly.
+  - Added support for recognizing  and  archives alongside  during folder scans when deep archive inspection is disabled.
+- **Printables Streaming ZIP64 Data Descriptor Fix (#77):** Fixed  when previewing, downloading, or converting 3D files inside Printables  archives that use Bit 3 () streaming flags with 64-bit ZIP64 Data Descriptors. Added a raw deflate fallback with Central Directory CRC32 verification across all archive streaming and thumbnail extraction utilities.
+- **Model Card Duplicate Badge Fix (#72):** Fixed an accidental duplicate template literal in  that broke script parsing in v2.2.0.
+
+### ??? Quality & CI Automation
+
+- **Automated Pre-Release Verification Suite:** Added  () with 22 automated static, UI handler, RBAC/CSRF security, and end-to-end API/scanner regression checks, enforced as a mandatory gate in the GitHub Actions Docker publishing workflow.
+
 ### v2.2.0 (2026-09-27)
 - **Quick Format Filter Pills &amp; Clickable Badges:** Added instant format filter pills (All, STL, 3MF, STEP, G-Code, OBJ) to the library toolbar, clickable format badges on model cards, and a live library model/storage summary counter.
 - **Bulk Category Assignment:** Added a Category action button to the floating multi-select bar in both All Models and Folder Explorer (Browse) to assign or clear categories across multiple selected items at once.
