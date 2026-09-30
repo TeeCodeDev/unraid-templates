@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Container version="2">
   <Name>GyroidVault</Name>
-  <Version>v2.2.0</Version>
+  <Version>v2.2.2</Version>
   <Repository>ghcr.io/teecodedev/gyroidvault:latest</Repository>
   <Registry>https://ghcr.io/teecodedev/gyroidvault</Registry>
   <Network>bridge</Network>
@@ -21,7 +21,7 @@
   <ExtraParams/>
   <PostArgs/>
   <CPUset/>
-  <Date>2026-09-27</Date>
+  <Date>2026-09-30</Date>
   <Screenshot>https://raw.githubusercontent.com/TeeCodeDev/GyroidVault/main/screenshots/library-grid.png</Screenshot>
   <Screenshot>https://raw.githubusercontent.com/TeeCodeDev/GyroidVault/main/screenshots/studio-model-detail.png</Screenshot>
   <Screenshot>https://raw.githubusercontent.com/TeeCodeDev/GyroidVault/main/screenshots/studio-pawn.png</Screenshot>
@@ -29,6 +29,22 @@
   <DonateText>If you like GyroidVault, buy me a coffee!</DonateText>
   <DonateLink>https://ko-fi.com/D1D51ZGUNL</DonateLink>
   <Changes>
+### v2.2.2 (2026-09-30)
+This hotfix release resolves a few files that had not been included in the v2.2.1 build, fixes the model detail action bar layout, prevents the startup welcome popup from reappearing on page refreshes, and improves library scanner subfolder consolidation.
+
+### 🐛 Bug Fixes & Polish
+
+- **Model Detail Action Bar & Guest Permissions (#80):**
+  - Updated the  and  layout so the **Download All (.zip)** button sits cleanly on a single line alongside the other action buttons (using matching  styling) without pushing the **Delete** button off-screen.
+  - Removed the duplicate  button from the Files panel header and hidden both **Download All (.zip)** and **+ Log Print** for unauthenticated guest visitors.
+- **Startup Welcome Popup Persistence & Sidebar Ko-fi Card (#79):**
+  - Fixed a version key mismatch ( vs ) and  override in  /  that caused the *Welcome to GyroidVault* modal to reappear on every page refresh.
+  - Moved the **Support on Ko-fi** link out of the footer into a dedicated card above the user profile section in the bottom-left sidebar.
+- **Scanner Subfolder Consolidation & Disabled ZIP Scan Cleanup (#78):**
+  - Prevented directories that contain only documentation files (, , ) without 3D/archive files from being indexed as standalone  models.
+  - Model directories containing generic internal subfolders (such as , , , , , , , etc.) are now consolidated into a single parent model — and any previously created standalone subfolder models are automatically merged into their parent model during scanning.
+  - Disabling *Scan & Index ZIP Archives* now immediately purges any previously indexed virtual archive entries () and is also respected during manual file uploads.
+
 ### v2.2.0 (2026-09-27)
 - **Quick Format Filter Pills &amp; Clickable Badges:** Added instant format filter pills (All, STL, 3MF, STEP, G-Code, OBJ) to the library toolbar, clickable format badges on model cards, and a live library model/storage summary counter.
 - **Bulk Category Assignment:** Added a Category action button to the floating multi-select bar in both All Models and Folder Explorer (Browse) to assign or clear categories across multiple selected items at once.
