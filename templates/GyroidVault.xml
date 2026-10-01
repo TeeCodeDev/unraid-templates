@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Container version="2">
   <Name>GyroidVault</Name>
-  <Version>v2.2.0</Version>
+  <Version>v2.2.3</Version>
   <Repository>ghcr.io/teecodedev/gyroidvault:latest</Repository>
   <Registry>https://ghcr.io/teecodedev/gyroidvault</Registry>
   <Network>bridge</Network>
@@ -21,7 +21,7 @@
   <ExtraParams/>
   <PostArgs/>
   <CPUset/>
-  <Date>2026-09-27</Date>
+  <Date>2026-10-01</Date>
   <Screenshot>https://raw.githubusercontent.com/TeeCodeDev/GyroidVault/main/screenshots/library-grid.png</Screenshot>
   <Screenshot>https://raw.githubusercontent.com/TeeCodeDev/GyroidVault/main/screenshots/studio-model-detail.png</Screenshot>
   <Screenshot>https://raw.githubusercontent.com/TeeCodeDev/GyroidVault/main/screenshots/studio-pawn.png</Screenshot>
@@ -29,6 +29,20 @@
   <DonateText>If you like GyroidVault, buy me a coffee!</DonateText>
   <DonateLink>https://ko-fi.com/D1D51ZGUNL</DonateLink>
   <Changes>
+### v2.2.3 (2026-10-01)
+## GyroidVault v2.2.3
+
+### 🐛 Bug Fixes
+- **Fix missing  import on ZIP file upload (#81):** Resolves a runtime  where uploading a  archive caused model creation to fail when evaluating the  setting ().
+
+### 🛡️ Test Suite Hardening & CI Enhancements
+- **Permanent Static AST Scope & Undeclared Identifier Scanner:** Added a full Abstract Syntax Tree (AST) scope scanner () using  across all 22 backend files and frontend application scripts. The pre-release test suite () now strictly verifies that 100% of variables, function calls, and module imports are declared before any code can be committed or released.
+- **Multi-Format Upload Matrix in CI:** Added real automated E2E upload verification for ,  archives (verifying internal file inspection), , , , and images to guarantee file ingest reliability.
+- **Direct Slicer Upload Endpoint Test:** Added test coverage for the OctoPrint/slicer upload hook ().
+- **Viewer Scoping Polish:** Fixed variable scoping in  around the STEP importer timeout timer and viewer part selector.
+
+**Full Changelog**: https://github.com/TeeCodeDev/GyroidVault/compare/v2.2.2...v2.2.3
+
 ### v2.2.0 (2026-09-27)
 - **Quick Format Filter Pills &amp; Clickable Badges:** Added instant format filter pills (All, STL, 3MF, STEP, G-Code, OBJ) to the library toolbar, clickable format badges on model cards, and a live library model/storage summary counter.
 - **Bulk Category Assignment:** Added a Category action button to the floating multi-select bar in both All Models and Folder Explorer (Browse) to assign or clear categories across multiple selected items at once.
