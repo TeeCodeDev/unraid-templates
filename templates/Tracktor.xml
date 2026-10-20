@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>Tracktor</Name>
+  <Version>v2.1.0</Version>
+  <Repository>ghcr.io/javedh-dev/tracktor:latest</Repository>
+  <Registry>https://ghcr.io/javedh-dev/tracktor</Registry>
+  <Network>bridge</Network>
+  <MyPort>3333</MyPort>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/javedh-dev/tracktor/issues</Support>
+  <Project>https://github.com/javedh-dev/tracktor</Project>
+  <Overview>Tracktor is a modern, open-source, self-hosted vehicle management platform built with SvelteKit, Tailwind CSS, and SQLite. Keep fuel logs, service history, insurance and compliance certificates, and maintenance reminders for all your vehicles in one place.&#xD;
+&#xD;
+[b]Key Features:[/b]&#xD;
+- [b]Garage Management:[/b] Multi-vehicle fleet support with individual fuel types, specs, and history.&#xD;
+- [b]Fuel &amp; Efficiency Tracking:[/b] Log fill-ups and monitor fuel consumption, mileage, and cost-per-distance trends.&#xD;
+- [b]Service &amp; Maintenance Logs:[/b] Full service history with parts, costs, and scheduled maintenance alerts.&#xD;
+- [b]Compliance &amp; Documents:[/b] Track insurance policies, pollution certs, and upcoming renewal expiry dates.&#xD;
+- [b]Customizable Dashboard:[/b] Fleet-wide overview with drag-and-drop widget layout.&#xD;
+- [b]Multi-Language:[/b] Supports 11 languages (English, German, French, Spanish, Italian, and more).&#xD;
+- [b]Fast &amp; Self-Contained:[/b] SQLite with Drizzle ORM, local file uploads, and zero required external services.&#xD;
+&#xD;
+[b]Initial Setup:[/b]&#xD;
+When opening the web interface for the first time at [inline]http://[IP]:[PORT:3000]/[/inline], Tracktor will automatically display the account registration form to create your admin account.</Overview>
+  <Category>Tools:Utilities Productivity: Other:</Category>
+  <WebUI>http://[IP]:[PORT:3000]/</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/TeeCodeDev/unraid-templates/main/templates/Tracktor.xml</TemplateURL>
+  <ReadMe>https://raw.githubusercontent.com/javedh-dev/tracktor/main/README.md</ReadMe>
+  <ExtraSearchTerms>tracktor car vehicle maintenance auto fleet garage fuel logbook lube logger expense mileage tracker svelte</ExtraSearchTerms>
+  <License>MIT</License>
+  <Icon>https://raw.githubusercontent.com/javedh-dev/tracktor/main/static/pwa-512x512.png</Icon>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <Date>2026-10-20</Date>
+  <Screenshot>https://raw.githubusercontent.com/javedh-dev/tracktor/main/docs/images/dashboard-dark.png</Screenshot>
+  <Screenshot>https://raw.githubusercontent.com/javedh-dev/tracktor/main/docs/images/dashboard-light.png</Screenshot>
+  <Config Name="WebUI Port" Target="3000" Default="3333" Mode="tcp" Description="The port for the Tracktor web interface (internal container port is 3000)." Type="Port" Display="always" Required="true" Mask="false"/>
+  <Config Name="AppData" Target="/data" Default="/mnt/user/appdata/tracktor" Mode="rw" Description="Storage path for SQLite database (tracktor.db), uploaded documents, images, and log files." Type="Path" Display="always" Required="true" Mask="false"/>
+  <Config Name="App Secret Key" Target="APP_SECRET" Default="" Mode="" Description="Secret key used to encrypt stored credentials (e.g. notification provider passwords). Generate a random 32-character hex string (e.g. run 'openssl rand -hex 32' in terminal)." Type="Variable" Display="always" Required="false" Mask="true"/>
+  <Config Name="HTTP Mode" Target="HTTP_MODE" Default="http" Mode="" Description="Set to 'https' if running behind an SSL/TLS reverse proxy (marks session cookies as Secure), or 'http' for direct local network access." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="Base URL Path" Target="BASE_URL" Default="" Mode="" Description="Base URL sub-path if serving behind a reverse proxy sub-folder (e.g. '/tracktor'). Leave blank if serving from root domain or subdomain." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="CORS Origins" Target="CORS_ORIGINS" Default="*" Mode="" Description="Allowed CORS origins (comma-separated list, e.g. 'http://example.com,https://garage.domain.com' or '*' to allow all)." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Disable Authentication" Target="TRACKTOR_DISABLE_AUTH" Default="false" Mode="" Description="Set to 'true' to disable authentication entirely (not recommended)." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Demo Mode" Target="TRACKTOR_DEMO_MODE" Default="false" Mode="" Description="Set to 'true' to load sample demo vehicles and data." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Log Level" Target="LOG_LEVEL" Default="info" Mode="" Description="Logging verbosity (error, warn, info, http, verbose, debug, silly)." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+</Container>
+
