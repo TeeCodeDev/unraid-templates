@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>LanGuard-Scanner</Name>
+  <Version>v1.24.0</Version>
+  <Repository>ghcr.io/hillaliy/languard-scheduler:latest</Repository>
+  <Registry>https://ghcr.io/hillaliy/languard-scheduler</Registry>
+  <Network>host</Network>
+  <MyPort/>
+  <Shell>sh</Shell>
+  <Privileged>true</Privileged>
+  <Support>https://github.com/hillaliy/LanGuard/issues</Support>
+  <Project>https://github.com/hillaliy/LanGuard</Project>
+  <Overview>LanGuard Scanner (Scheduler) is the network discovery engine for LanGuard. It performs automated Layer 2 ARP sweeps, service scans, port monitoring, Wake-on-LAN actions, and local Docker container inventorying.&#xD;
+&#xD;
+[b]NOTE:[/b] This is the scanner/scheduler component of the LanGuard stack. It requires host networking and privileged mode to execute raw socket ARP scans. Must share the same [inline]/data[/inline] directory and [inline]SECRET_KEY[/inline] with [b]LanGuard-Backend[/b].&#xD;
+&#xD;
+[b]Credits &amp; Support:[/b]&#xD;
+- Created by [b]Yossi Hillali[/b] ([url=https://github.com/hillaliy/LanGuard]GitHub[/url]). Support the developer on [url=https://www.paypal.me/hillaliy]PayPal[/url].&#xD;
+- The donation link below specifically supports the maintenance of this Unraid template repository.</Overview>
+  <Category>Network:Management Security: Tools:Utilities</Category>
+  <WebUI/>
+  <TemplateURL>https://raw.githubusercontent.com/TeeCodeDev/unraid-templates/main/templates/LanGuard-Scanner.xml</TemplateURL>
+  <ReadMe>https://raw.githubusercontent.com/hillaliy/LanGuard/main/README.md</ReadMe>
+  <Requires>LanGuard-Backend</Requires>
+  <ExtraSearchTerms>languard scanner scheduler arp nmap network discovery</ExtraSearchTerms>
+  <License>Apache-2.0</License>
+  <Icon>https://raw.githubusercontent.com/hillaliy/LanGuard/main/frontend/public/logo.png</Icon>
+  <ExtraParams/>
+  <PostArgs>python -u manage.py run_scheduler --run-now</PostArgs>
+  <CPUset/>
+  <Date>2026-10-22</Date>
+  <DonateText>Support the Unraid template maintainer (TeeCodeDev)</DonateText>
+  <DonateLink>https://ko-fi.com/D1D51ZGUNL</DonateLink>
+  <Config Name="Secret Key" Target="SECRET_KEY" Default="" Mode="" Description="Shared secret key. Must match the SECRET_KEY configured in LanGuard-Backend." Type="Variable" Display="always" Required="true" Mask="true"/>
+  <Config Name="Allowed Hosts" Target="ALLOWED_HOSTS" Default="127.0.0.1,[IP],languard.local" Mode="" Description="Allowed hosts matching LanGuard-Backend." Type="Variable" Display="always" Required="true" Mask="false"/>
+  <Config Name="AppData Database" Target="/data" Default="/mnt/user/appdata/languard/data" Mode="rw" Description="Shared database directory with LanGuard-Backend." Type="Path" Display="always" Required="true" Mask="false"/>
+  <Config Name="Static Files" Target="/static" Default="/mnt/user/appdata/languard/static" Mode="rw" Description="Shared static assets directory with LanGuard-Backend." Type="Path" Display="advanced" Required="true" Mask="false"/>
+  <Config Name="Docker Socket (Container Inventory)" Target="/var/run/docker.sock" Default="/var/run/docker.sock" Mode="ro" Description="Host Docker socket to allow LanGuard to discover running containers and mapped ports." Type="Path" Display="always" Required="false" Mask="false"/>
+</Container>
+

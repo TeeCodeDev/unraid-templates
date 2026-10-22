@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>CliqRelay</Name>
+  <Version>v0.1.0</Version>
+  <Repository>cliqrelay-web:latest</Repository>
+  <Registry>https://github.com/CliqRelay/cliqrelay</Registry>
+  <Network>bridge</Network>
+  <MyPort>3000</MyPort>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/CliqRelay/cliqrelay/issues</Support>
+  <Project>https://github.com/CliqRelay/cliqrelay</Project>
+  <Overview>CliqRelay is an open-source platform that automatically transforms browser clicks and interactions into beautiful, step-by-step visual documentation and technical guides. By pairing a native browser extension with a high-performance backend, CliqRelay tracks exact DOM interactions and contextual screenshots, automating the heavy lifting of writing user manuals, onboarding documentation, and SOPs.&#xD;
+&#xD;
+[b]Key Features:[/b]&#xD;
+- [b]Instant Capture:[/b] Record user workflows in real time using the CliqRelay Chrome/Firefox browser extension.&#xD;
+- [b]Contextual Screenshots:[/b] Automatically captures and crops screenshots for every click and interaction.&#xD;
+- [b]Live Recording Sidepanel:[/b] Start, pause, review, and watch steps populate live in the extension sidepanel.&#xD;
+- [b]Rich Guide Editor:[/b] Reorder steps, edit descriptions, blur sensitive details, and insert annotations (tips, callouts, alerts, headers).&#xD;
+- [b]PDF Export:[/b] Export polished, print-ready PDF guides for offline handoff and team sharing.&#xD;
+- [b]Guide Lifecycle Management:[/b] Star, publish, organize, and soft-delete guides with full restore capabilities.&#xD;
+&#xD;
+[b]DEPLOYMENT &amp; SETUP INSTRUCTIONS:[/b]&#xD;
+CliqRelay consists of a web frontend, backend API, worker, PostgreSQL database, Redis, and RustFS object storage.&#xD;
+[b]Recommended: Docker Compose Manager on Unraid[/b]&#xD;
+1. Upstream provides a complete [inline]docker-compose.prod.yml[/inline] in the repository.&#xD;
+2. Clone the repository into your appdata folder:&#xD;
+[code]git clone https://github.com/CliqRelay/cliqrelay.git /mnt/user/appdata/cliqrelay[/code]&#xD;
+3. Copy [inline]docker-compose.prod.env.example[/inline] to [inline]docker-compose.prod.env[/inline] and configure your secrets:&#xD;
+[code]cd /mnt/user/appdata/cliqrelay &amp;&amp; cp docker-compose.prod.env.example docker-compose.prod.env[/code]&#xD;
+4. Build and start the stack with Docker Compose:&#xD;
+[code]docker compose --env-file docker-compose.prod.env -f docker-compose.prod.yml up -d --build[/code]&#xD;
+5. Open the web interface at [inline]http://[IP]:3000[/inline] and install the browser extension.&#xD;
+&#xD;
+[b]Credits &amp; Support:[/b]&#xD;
+- CliqRelay is created by the [b]CliqRelay Team[/b] ([url=https://github.com/CliqRelay/cliqrelay]GitHub[/url]). Support the project via [url=https://dub.sh/tLh3JgA]GitHub Sponsors[/url].&#xD;
+- The donation link below specifically supports the maintenance of this Unraid template repository.</Overview>
+  <Category>Productivity: Tools:Utilities Other:</Category>
+  <WebUI>http://[IP]:[PORT:3000]/</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/TeeCodeDev/unraid-templates/main/templates/CliqRelay.xml</TemplateURL>
+  <ReadMe>https://raw.githubusercontent.com/CliqRelay/cliqrelay/main/README.md</ReadMe>
+  <ExtraSearchTerms>cliqrelay documentation guide scribe tango screenshot dom recorder walkthrough sop manual</ExtraSearchTerms>
+  <License>Apache-2.0</License>
+  <Icon>https://raw.githubusercontent.com/CliqRelay/cliqrelay/main/apps/web/public/app-logo-dark.png</Icon>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <Date>2026-10-22</Date>
+  <Screenshot>https://raw.githubusercontent.com/CliqRelay/cliqrelay/main/app-screenshot.png</Screenshot>
+  <Screenshot>https://raw.githubusercontent.com/CliqRelay/cliqrelay/main/project-banner.png</Screenshot>
+  <DonateText>Support the Unraid template maintainer (TeeCodeDev)</DonateText>
+  <DonateLink>https://ko-fi.com/D1D51ZGUNL</DonateLink>
+  <Config Name="WebUI Port" Target="3000" Default="3000" Mode="tcp" Description="The host port for the CliqRelay web dashboard (internal container port is 3000)." Type="Port" Display="always" Required="true" Mask="false"/>
+  <Config Name="API URL" Target="API_URL" Default="http://[IP]:8080" Mode="" Description="URL where the CliqRelay backend API is reachable." Type="Variable" Display="always" Required="true" Mask="false"/>
+  <Config Name="Auth URL" Target="AUTHULA_URL" Default="http://[IP]:8080" Mode="" Description="URL for authentication service endpoints." Type="Variable" Display="always" Required="false" Mask="false"/>
+</Container>
+

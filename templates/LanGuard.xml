@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>LanGuard</Name>
+  <Version>v1.24.0</Version>
+  <Repository>ghcr.io/hillaliy/languard-frontend:latest</Repository>
+  <Registry>https://ghcr.io/hillaliy/languard-frontend</Registry>
+  <Network>host</Network>
+  <MyPort>8080</MyPort>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/hillaliy/LanGuard/issues</Support>
+  <Project>https://github.com/hillaliy/LanGuard</Project>
+  <Overview>LanGuard is a modern, self-hosted network visibility and monitoring tool for discovering, organizing, and tracking devices on your local network (LAN).&#xD;
+&#xD;
+[b]NOTE: Coordinated 3-Container Setup[/b]&#xD;
+LanGuard runs as a coordinated 3-service stack using host networking:&#xD;
+1. [b]LanGuard[/b] (this template): Next.js web frontend &amp; Caddy reverse proxy on port 8080.&#xD;
+2. [b]LanGuard-Backend[/b]: Django REST API, background worker, and SQLite database on port 8000.&#xD;
+3. [b]LanGuard-Scanner[/b]: Layer 2 ARP scanner, port prober, and task scheduler.&#xD;
+[i]Make sure to install LanGuard-Backend and LanGuard-Scanner alongside this template, or deploy via Unraid's Docker Compose Manager using upstream's docker-compose.yaml.[/i]&#xD;
+&#xD;
+[b]Key Features:[/b]&#xD;
+- [b]Automated Device Discovery:[/b] Discovers IPv4 devices, vendors, MAC addresses, open ports, and active network services.&#xD;
+- [b]State &amp; History Tracking:[/b] Monitors online/offline availability, IP changes, and device attention alerts.&#xD;
+- [b]Inventory Organization:[/b] Organize devices by room, role, custom icon, and notes (regular, visitor, IoT, archived).&#xD;
+- [b]SNMP &amp; DNS Integrations:[/b] Discovers switches, APs, and printers via read-only SNMP v2c. Integrates with AdGuard Home, Pi-hole, Technitium, Speedtest Tracker, and HomeBox.&#xD;
+- [b]Multi-Channel Alerts:[/b] Instant notifications to Discord, Telegram, ntfy, or custom webhooks when unknown devices appear.&#xD;
+- [b]Wake-on-LAN:[/b] Wake asleep devices directly from the web interface.&#xD;
+&#xD;
+[b]Initial Setup:[/b]&#xD;
+1. Install [b]LanGuard-Backend[/b] first and configure a shared [inline]SECRET_KEY[/inline].&#xD;
+2. Install [b]LanGuard-Scanner[/b] using the same [inline]SECRET_KEY[/inline].&#xD;
+3. Install [b]LanGuard[/b] (Frontend) and open [inline]http://[IP]:8080[/inline] to create your admin account.&#xD;
+&#xD;
+[b]Credits &amp; Support:[/b]&#xD;
+- LanGuard is created by [b]Yossi Hillali[/b] ([url=https://github.com/hillaliy/LanGuard]GitHub[/url] | [url=https://hillaliy.github.io/LanGuard/]Documentation[/url]). Support the developer on [url=https://www.paypal.me/hillaliy]PayPal[/url].&#xD;
+- The donation link below specifically supports the maintenance of this Unraid template repository.</Overview>
+  <Category>Network:Management Security: Tools:Utilities</Category>
+  <WebUI>http://[IP]:8080/</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/TeeCodeDev/unraid-templates/main/templates/LanGuard.xml</TemplateURL>
+  <ReadMe>https://raw.githubusercontent.com/hillaliy/LanGuard/main/README.md</ReadMe>
+  <Requires>LanGuard-Backend, LanGuard-Scanner</Requires>
+  <ExtraSearchTerms>languard network monitor scanner arp lan ip watcher watchyourlan fing netdisco device tracker</ExtraSearchTerms>
+  <License>Apache-2.0</License>
+  <Icon>https://raw.githubusercontent.com/hillaliy/LanGuard/main/frontend/public/logo.png</Icon>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <Date>2026-10-22</Date>
+  <Screenshot>https://raw.githubusercontent.com/hillaliy/LanGuard/main/docs/demo-preview.png</Screenshot>
+  <DonateText>Support the Unraid template maintainer (TeeCodeDev)</DonateText>
+  <DonateLink>https://ko-fi.com/D1D51ZGUNL</DonateLink>
+  <Config Name="Frontend Listen Address" Target="FRONTEND_LISTEN_ADDRESS" Default=":8080" Mode="" Description="Listening address and port for the Caddy web server (default :8080)." Type="Variable" Display="always" Required="true" Mask="false"/>
+  <Config Name="Backend Upstream" Target="BACKEND_UPSTREAM" Default="127.0.0.1:8000" Mode="" Description="Address of the LanGuard backend API service (default 127.0.0.1:8000)." Type="Variable" Display="always" Required="true" Mask="false"/>
+</Container>
+

@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>OpenSEO</Name>
+  <Version>v0.1.14</Version>
+  <Repository>ghcr.io/every-app/open-seo:latest</Repository>
+  <Registry>https://ghcr.io/every-app/open-seo</Registry>
+  <Network>bridge</Network>
+  <MyPort>3001</MyPort>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/every-app/open-seo/issues</Support>
+  <Project>https://github.com/every-app/open-seo</Project>
+  <Overview>OpenSEO is an open-source, self-hosted alternative to Semrush and Ahrefs. It provides a focused, modern toolkit for keyword research, SERP analysis, backlink discovery, and site audits with a pay-as-you-go architecture (bring your own DataForSEO API key). Also features native Model Context Protocol (MCP) and AI SEO agent integration (SAM) for Claude Code, OpenClaw, and ChatGPT.&#xD;
+&#xD;
+[b]Key Features:[/b]&#xD;
+- [b]Keyword Research &amp; SERPs:[/b] Real-time search volumes, keyword difficulty, search intent, and live SERP rank tracking.&#xD;
+- [b]Backlink Analysis:[/b] Audit referring domains, anchor text distribution, and link authority.&#xD;
+- [b]Site Audits:[/b] Comprehensive technical SEO crawler checking broken links, meta tags, redirects, and Core Web Vitals.&#xD;
+- [b]AI Agent Integration (MCP):[/b] Connect AI coding assistants and use SAM (in-app SEO assistant powered by OpenRouter).&#xD;
+- [b]Pay-As-You-Go:[/b] No expensive monthly subscriptions; pay only for what you query using your own DataForSEO API credentials.&#xD;
+- [b]Privacy &amp; Self-Hosted:[/b] All research data and local databases remain securely on your server.&#xD;
+&#xD;
+[b]Initial Setup:[/b]&#xD;
+1. Set [b]AUTH_MODE[/b] to [inline]local_noauth[/inline] for local trusted network access (auto-logs in as admin@localhost), or use [inline]cloudflare_access[/inline] for Cloudflare Zero Trust.&#xD;
+2. Provide your [b]DATAFORSEO_API_KEY[/b] in the template settings or enter it directly inside the web UI.&#xD;
+3. Open [inline]http://[IP]:[PORT:3001]/[/inline] after starting the container.&#xD;
+&#xD;
+[b]Credits &amp; Support:[/b]&#xD;
+- OpenSEO is created by [b]Ben Senescu / every-app[/b] ([url=https://github.com/every-app/open-seo]GitHub[/url] | [url=https://openseo.so]Website[/url]).&#xD;
+- The donation link below specifically supports the maintenance of this Unraid template repository.</Overview>
+  <Category>Productivity: Tools:Utilities Other:</Category>
+  <WebUI>http://[IP]:[PORT:3001]/</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/TeeCodeDev/unraid-templates/main/templates/OpenSEO.xml</TemplateURL>
+  <ReadMe>https://raw.githubusercontent.com/every-app/open-seo/main/README.md</ReadMe>
+  <ExtraSearchTerms>openseo seo semrush ahrefs keyword research backlink serp audit dataforseo marketing analytics</ExtraSearchTerms>
+  <License>MIT</License>
+  <Icon>https://raw.githubusercontent.com/every-app/open-seo/main/web/public/android-chrome-512x512.png</Icon>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <Date>2026-10-22</Date>
+  <Screenshot>https://raw.githubusercontent.com/every-app/open-seo/main/web/public/social-card.jpg</Screenshot>
+  <DonateText>Support the Unraid template maintainer (TeeCodeDev)</DonateText>
+  <DonateLink>https://ko-fi.com/D1D51ZGUNL</DonateLink>
+  <Config Name="WebUI Port" Target="3001" Default="3001" Mode="tcp" Description="The port for the OpenSEO web interface (internal container port is 3001)." Type="Port" Display="always" Required="true" Mask="false"/>
+  <Config Name="AppData" Target="/app/.wrangler" Default="/mnt/user/appdata/open-seo" Mode="rw" Description="Storage path for local database and configuration files." Type="Path" Display="always" Required="true" Mask="false"/>
+  <Config Name="DataForSEO API Key" Target="DATAFORSEO_API_KEY" Default="" Mode="" Description="DataForSEO API key (Base64 login:password). Required for live keyword search, SERP data, and backlink analysis." Type="Variable" Display="always" Required="false" Mask="true"/>
+  <Config Name="Authentication Mode" Target="AUTH_MODE" Default="local_noauth" Mode="" Description="Authentication mode: 'local_noauth' for local trusted network (admin@localhost auto-login), 'cloudflare_access' for Cloudflare Access Zero Trust, or 'hosted' for email/password." Type="Variable" Display="always" Required="true" Mask="false"/>
+  <Config Name="Allowed Host" Target="ALLOWED_HOST" Default="" Mode="" Description="Optional domain name or IP used to access OpenSEO when running behind a reverse proxy (e.g. seo.yourdomain.com)." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="OpenRouter API Key" Target="OPENROUTER_API_KEY" Default="" Mode="" Description="Optional OpenRouter API key for SAM, the in-app AI SEO assistant." Type="Variable" Display="advanced" Required="false" Mask="true"/>
+  <Config Name="OpenRouter Model" Target="OPENROUTER_MODEL" Default="anthropic/claude-3.5-sonnet" Mode="" Description="Model identifier for the AI assistant." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Disable Telemetry" Target="OPENSEO_TELEMETRY_DISABLED" Default="true" Mode="" Description="Set to 'true' to disable anonymous usage heartbeat telemetry." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Better Auth Secret" Target="BETTER_AUTH_SECRET" Default="" Mode="" Description="Random secret (32+ characters) used to encrypt stored OAuth credentials (required for Google Search Console)." Type="Variable" Display="advanced" Required="false" Mask="true"/>
+  <Config Name="Google Client ID" Target="GOOGLE_CLIENT_ID" Default="" Mode="" Description="Optional Google OAuth Client ID for Google Search Console integration." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Google Client Secret" Target="GOOGLE_CLIENT_SECRET" Default="" Mode="" Description="Optional Google OAuth Client Secret for Google Search Console integration." Type="Variable" Display="advanced" Required="false" Mask="true"/>
+  <Config Name="Cloudflare Include Process Env" Target="CLOUDFLARE_INCLUDE_PROCESS_ENV" Default="true" Mode="" Description="Exposes Compose/Docker environment variables to cloudflare:workers runtime bindings." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+</Container>
+
