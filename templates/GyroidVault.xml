@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Container version="2">
   <Name>GyroidVault</Name>
-  <Version>v2.2.0</Version>
+  <Version>v2.3.0</Version>
   <Repository>ghcr.io/teecodedev/gyroidvault:latest</Repository>
   <Registry>https://ghcr.io/teecodedev/gyroidvault</Registry>
   <Network>bridge</Network>
@@ -21,7 +21,7 @@
   <ExtraParams/>
   <PostArgs/>
   <CPUset/>
-  <Date>2026-09-27</Date>
+  <Date>2026-10-22</Date>
   <Screenshot>https://raw.githubusercontent.com/TeeCodeDev/GyroidVault/main/screenshots/library-grid.png</Screenshot>
   <Screenshot>https://raw.githubusercontent.com/TeeCodeDev/GyroidVault/main/screenshots/studio-model-detail.png</Screenshot>
   <Screenshot>https://raw.githubusercontent.com/TeeCodeDev/GyroidVault/main/screenshots/studio-pawn.png</Screenshot>
@@ -29,6 +29,89 @@
   <DonateText>If you like GyroidVault, buy me a coffee!</DonateText>
   <DonateLink>https://ko-fi.com/D1D51ZGUNL</DonateLink>
   <Changes>
+### v2.3.0 (2026-10-22)
+# GyroidVault v2.3.0 — The Customization & SSO Release 🎨🔑
+
+GyroidVault v2.3.0 brings personalized UI theming, native Single Sign-On (OIDC), customizable library scanning modes, and deep homelab / NAS optimizations (including spin-down support for sleeping hard drives).
+
+---
+
+## 🌟 Highlights
+
+### 🎨 1. Customizable UI & Theming Engine
+- **New "User Interface" Settings Tab:** Fine-tune the look and feel of your vault to match your setup.
+- **6 Hand-Crafted Themes:**
+  - **Dark Glass (Default):** Translucent glassmorphism with subtle cyan glow.
+  - **Slate:** Neutral dark gray workspace.
+  - **Midnight:** Deep navy dark theme.
+  - **Light Mode:** High-contrast bright layout.
+  - **OLED High Contrast:** Pitch-black (`#000000`) theme optimized for OLED displays.
+  - **Cyberpunk:** Neon accents with high-energy dark terminal aesthetics.
+- **6 Accent Colors:** Cyan, Blue, Emerald, Purple, Amber, and Rose with instant live switching.
+
+### ⚙️ 2. Granular Module Toggles & Default Landing Page
+- Disable features and taxonomy tools you don't need to keep your sidebar and model cards distraction-free:
+  - **Organization:** Toggle Categories, Collections, Tags, and Favorites.
+  - **Navigation:** Toggle Folder Explorer (Browse), Statistics, and Format Pills.
+  - **Print Workflow:** Toggle Print History / Materials, Public Share Links, and Moonraker Printers.
+- **Configurable Landing Page:** Choose whether users land on **All Models (Grid/List)**, **Folder Explorer (Browse)**, or **Collections**.
+
+### 🔑 3. OpenID Connect (OIDC) Single Sign-On (SSO)
+- Native enterprise-grade SSO support for **Authentik**, **Keycloak**, **Authelia**, and **Okta**.
+- Configurable **Role Claim** mapping and **Admin Group** authorization with automatic user provisioning and customizable login button label.
+
+### 📂 4. Library Scan Modes (Issue #5)
+- **Folder Mode (Recommended):** Groups all 3D files in a subfolder into a single unified model (ideal for multi-part prints and assemblies).
+- **File Mode:** Indexes each standalone 3D file as its own model with automatic companion file pairing (e.g., `part.stl` + `part.png` + `part.gcode`).
+- **Root-Level Improvements:** Files living directly in the root of your library are now indexed cleanly as standalone models rather than lumped into a generic folder.
+
+### 🌙 5. Spin-Down Friendly Disk Sync (Issue #83)
+- Background library disk synchronization interval is now fully configurable via **Settings → System** (`auto_sync_interval`) or the `SYNC_INTERVAL_HOURS` environment variable.
+- **NAS & Unraid Sleep Mode:** Setting the interval to `0` completely disables periodic background disk checks, allowing mechanical hard drives to remain in low-power spin-down indefinitely without being woken every hour.
+
+### 🖨️ 6. Creality Print Slicer Integration
+- 1-click slicing deep-link support (`crealityprint://`) directly launches models into Creality Print alongside OrcaSlicer, Bambu Studio, Elegoo Slicer, and Cura.
+
+### 💬 7. Hover Tooltips on Model & Folder Cards (Issue #82)
+- Long filenames and directory titles truncated by ellipsis (`...`) now display their complete, untruncated name on hover via native browser tooltips.
+
+### 🛡️ 8. 1-Click SQLite & Thumbnail Backup
+- Instantly download a complete `.zip` snapshot of your SQLite database (`gyroidvault.db`), user accounts, collections, tags, print history, and uploaded thumbnails from **Settings → System**.
+
+---
+
+## 🛠️ Complete Changelog
+
+### Features & Enhancements
+- Added dedicated **User Interface** tab in System Settings (`UI.uiSettingsForm`).
+- Added theme picker (Dark Glass, Slate, Midnight, Light, OLED, Cyberpunk) with persistent storage and instant preview.
+- Added 6-color circular accent picker with non-clipping outline styling.
+- Added modular feature toggles (`enable_categories`, `enable_collections`, `enable_tags`, `enable_favorites`, `enable_browse`, `enable_stats`, `enable_format_pills`, `enable_print_history`, `enable_sharing`, `enable_printers`) integrated into `/api/system/public-config`.
+- Added configurable default landing page (`default_landing_page`).
+- Added OpenID Connect (OIDC) authentication endpoints (`/api/auth/oidc/login`, `/api/auth/oidc/callback`) and admin configuration in Settings.
+- Added clickable Scan Mode selector card grid for Folder Mode vs. File Mode.
+- Added configurable `auto_sync_interval` with dynamic background timer restart (`setupBackgroundSync`).
+- Added Creality Print slicer support in UI and profile preferences.
+- Added hover `title` tooltips to `UI.modelCard`, `UI.folderCard`, and `UI.recentModels`.
+- Made SMTP and Moonraker printer forms full-width across Settings panels.
+
+### Bug Fixes & Reliability
+- Fixed `.3MF` surface normal calculations in `viewer.js` using `computeVertexNormals()` with indexed geometry support to eliminate shading artifacts.
+- Fixed layout overflowing on model detail headers for guest users.
+- Fixed root-level file grouping in the library scanner so root files are treated as individual models.
+- Fixed background scanner timers and added dynamic reconfiguration when intervals change in Settings.
+
+### Testing & Infrastructure
+- Expanded automated pre-release test suite (`tests/release-check.js`) to **42 tests with 100% pass rate**, covering OIDC SSO flows, scanner mode matrices, background timers, RBAC security, and UI template rendering.
+
+---
+
+*Thank you to everyone in the 3D printing and homelab communities for your feedback and support!*  
+☕ Support development: [ko-fi.com/D1D51ZGUNL](https://ko-fi.com/D1D51ZGUNL)  
+🌐 Website: [gyroidvault.com](https://gyroidvault.com)
+
+
+
 ### v2.2.0 (2026-09-27)
 - **Quick Format Filter Pills &amp; Clickable Badges:** Added instant format filter pills (All, STL, 3MF, STEP, G-Code, OBJ) to the library toolbar, clickable format badges on model cards, and a live library model/storage summary counter.
 - **Bulk Category Assignment:** Added a Category action button to the floating multi-select bar in both All Models and Folder Explorer (Browse) to assign or clear categories across multiple selected items at once.
