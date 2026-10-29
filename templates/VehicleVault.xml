@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Container version="2">
   <Name>VehicleVault</Name>
-  <Version>v1.0.14</Version>
+  <Version>v1.0.15</Version>
   <Repository>ghcr.io/teecodedev/vehiclevault:latest</Repository>
   <Registry>https://ghcr.io/teecodedev/vehiclevault</Registry>
   <Network>bridge</Network>
@@ -40,6 +40,12 @@ Open the web interface at [inline]http://[IP]:[PORT:3001]/[/inline]. The first u
   <DonateText>If you like VehicleVault, buy me a coffee!</DonateText>
   <DonateLink>https://ko-fi.com/D1D51ZGUNL</DonateLink>
   <Changes>
+### v1.0.15 (2026-10-29)
+- [b]Voertuig Bewerken &amp; Brandstoftype Dropdown:[/b] Vrij tekstveld vervangen door een dropdown met alle gangbare brandstof- en hybridesoorten. Uitlijning van aankoopstand en aanschafprijs strak gecorrigeerd.
+- [b]RDW Brandstof &amp; Hybride Detectie:[/b] RDW-autofill vraagt nu automatisch het officiële RDW-brandstofregister uit en herkent automatisch HEV, PHEV, EV, Benzine en Diesel.
+- [b]Slimme Tankbeurt / Laadbeurt Interface:[/b] De Liters/kWh-schakelaar wordt automatisch verborgen voor brandstof- en reguliere hybride auto's (en toont direct Laadbeurt voor EV's). De schakelaar is alleen actief bij Plug-in Hybrides (PHEV).
+- [b]Documenten Upload &amp; Compressie:[/b] Automatische browser-compressie toegevoegd aan de Documenten-module (&lt; 350 KB). Foutoplossing voor multer uploadnaam ('file' en 'document') en gezinsvloot permissies.
+
 ### v1.0.14 (2026-10-29)
 - [b]Gebruikersrollen &amp; Chauffeur-Modus:[/b] Ondersteuning voor meerdere gebruikers met rollen (Beheerder vs Chauffeur). Chauffeur-modus biedt een vereenvoudigde interface op telefoon en desktop, ideaal voor gezinsleden om snel tank- of laadbeurten in te voeren.
 - [b]Pangolin &amp; Reverse Proxy Auto-Provisioning:[/b] Nieuwe gebruikers via Remote-User / X-Pangolin-User headers worden automatisch geregistreerd met instelbare rol.
