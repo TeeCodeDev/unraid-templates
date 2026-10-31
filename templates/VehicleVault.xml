@@ -46,7 +46,7 @@ Open the web interface at [inline]http://[IP]:[PORT:3084]/[/inline]. The first u
 - [b]Passkeys (WebAuthn) &amp; Recovery Codes:[/b] Inloggen met vingerafdruk, Face ID of apparaatcode via WebAuthn, inclusief 8 veilige eenmalige herstelcodes.
 - [b]Rittenadministratie Import:[/b] Direct importeren van Belastingdienst Excel (.xlsx) en CSV bestanden met automatische kolomherkenning en kentekensplitsing.
 - [b]Uitgebreide Console Logging:[/b] Gedetailleerde startup banners, real-time HTTP request logging met statusiconen, responstijd en IP-detectie.
-- [b]Dubbele Poort Luisteraar (3084 &amp; 3001):[/b] Ondersteunt zowel de nieuwe standaardpoort 3084 als de legacy Unraid poort 3001 voor naadloze backwards compatibility.
+- [b]Standaard Poort 3084:[/b] Gestandaardiseerde poort 3084 voor de webinterface en API.
 - [b]Meertaligheid (i18n):[/b] Volledige Engelse en Nederlandse vertalingen voor alle nieuwe modules en instellingen.
 ### v1.0.16 (2026-10-29)
 - [b]Pangolin &amp; Reverse Proxy Multi-User Resolving:[/b] Pangolin Remote-User &amp; Remote-Email headers hebben nu altijd voorrang boven no-auth, zodat verschillende Pangolin-accounts direct als hun eigen gebruiker en rol (Chauffeur vs Beheerder) herkend worden.
@@ -107,8 +107,8 @@ Open the web interface at [inline]http://[IP]:[PORT:3084]/[/inline]. The first u
 - Model Context Protocol (MCP) server support for AI agents.
 - Bilingual interface (Dutch and English).
   </Changes>
-  <Config Name="WebUI Port" Target="3084" Default="3084" Mode="tcp" Description="The port for the VehicleVault web interface (Container listens on both 3084 and 3001 for backwards compatibility)." Type="Port" Display="always" Required="true" Mask="false"/>
-  <Config Name="Container Port" Target="PORT" Default="3084" Mode="" Description="Container HTTP port (defaults to 3084, also listens on 3001)." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="WebUI Port" Target="3084" Default="3084" Mode="tcp" Description="The port for the VehicleVault web interface." Type="Port" Display="always" Required="true" Mask="false"/>
+  <Config Name="Container Port" Target="PORT" Default="3084" Mode="" Description="Container HTTP port (defaults to 3084)." Type="Variable" Display="advanced" Required="false" Mask="false"/>
   <Config Name="AppData" Target="/data" Default="/mnt/user/appdata/vehiclevault" Mode="rw" Description="Storage path for SQLite database (vehiclevault.db), uploaded vehicle photos, receipt scans, documents, and invoices." Type="Path" Display="always" Required="true" Mask="false"/>
   <Config Name="JWT Secret" Target="JWT_SECRET" Default="" Mode="" Description="Secret key used to sign access tokens (JWT). Leave blank for auto-generated default, or generate a random 32-character string." Type="Variable" Display="advanced" Required="false" Mask="true"/>
   <Config Name="JWT Refresh Secret" Target="JWT_REFRESH_SECRET" Default="" Mode="" Description="Secret key used to sign refresh tokens. Leave blank for auto-generated default, or generate a random 32-character string." Type="Variable" Display="advanced" Required="false" Mask="true"/>
