@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Container version="2">
   <Name>GyroidVault</Name>
-  <Version>v2.2.0</Version>
+  <Version>v2.4.0</Version>
   <Repository>ghcr.io/teecodedev/gyroidvault:latest</Repository>
   <Registry>https://ghcr.io/teecodedev/gyroidvault</Registry>
   <Network>bridge</Network>
@@ -21,7 +21,7 @@
   <ExtraParams/>
   <PostArgs/>
   <CPUset/>
-  <Date>2026-09-27</Date>
+  <Date>2026-11-13</Date>
   <Screenshot>https://raw.githubusercontent.com/TeeCodeDev/GyroidVault/main/screenshots/library-grid.png</Screenshot>
   <Screenshot>https://raw.githubusercontent.com/TeeCodeDev/GyroidVault/main/screenshots/studio-model-detail.png</Screenshot>
   <Screenshot>https://raw.githubusercontent.com/TeeCodeDev/GyroidVault/main/screenshots/studio-pawn.png</Screenshot>
@@ -29,6 +29,125 @@
   <DonateText>If you like GyroidVault, buy me a coffee!</DonateText>
   <DonateLink>https://ko-fi.com/D1D51ZGUNL</DonateLink>
   <Changes>
+### v2.4.0 (2026-11-13)
+# GyroidVault v2.4.0 — Release Notes
+
+> **Tag:** `v2.4.0`  
+> **Docker Image:** `ghcr.io/teecodedev/gyroidvault:v2.4.0` (and `:latest`)  
+> **Live Website:** [gyroidvault.com](https://gyroidvault.com)
+
+GyroidVault v2.4.0 is a major milestone release! This update introduces first-class AI assistant integration via the Model Context Protocol (MCP), deep multi-color 3MF visualization with an interactive parts drawer, full web-based backup restore, and intelligent model version tracking.
+
+---
+
+## 🌟 Highlights & Major Features
+
+### 🤖 1. Native Model Context Protocol (MCP) Server
+Turn GyroidVault into an AI-controllable 3D vault. Connect AI assistants like Claude Desktop, Cursor, or local LLM agents directly to your vault using the open MCP standard.
+- **Dual Transports:**
+  - **Server-Sent Events (SSE):** Native `/api/mcp/sse` and `/api/mcp/messages` endpoints running over your existing HTTP/HTTPS port, protected by your API token. Ideal for Docker, Unraid, and remote setups.
+  - **Stdio CLI:** Zero-dependency wrapper via `npm run mcp` (or `node scripts/mcp-server.js`) for local desktop AI tools.
+- **Exposed Tools:**
+  - `search_models(query, category, tag, format)`: Natural language search across your models.
+  - `get_model_details(model_id)`: Deep inspection of model parts, print tips, filament settings, and dimensions.
+  - `list_collections()` & `get_collection(id)`: Query collections and projects.
+  - `get_slicer_link(file_id, slicer)`: Generate 1-click launch links for OrcaSlicer, Bambu Studio, Creality Print, and Cura.
+  - `update_model(model_id, { tags, category_id, print_tips })`: AI-assisted auto-tagging, categorisation, and notes.
+- **MCP Settings Tab:** Dedicated configuration hub in Settings with copy-paste configs for Claude Desktop & Cursor, live connection test ping, and interactive tool schemas.
+
+---
+
+### 🎨 2. 3MF Multi-Color Studio & Parts Drawer (Issue #6)
+View multi-color prints exactly as intended in your slicer.
+- **Multi-Color Filament Rendering:** Parses embedded filament paint colors and vertex colors from Bambu Studio and OrcaSlicer 3MF projects.
+- **Original 3MF Colors Palette:** Added an "Original 3MF Colors" rainbow swatch in the 3D Studio to view files in their authentic exported filament shades or switch to custom single-color materials.
+- **Interactive Parts Drawer:** A new Parts button (`btn-tree`) opens an overlay drawer listing every individual body and mesh inside the 3MF file with `👁️` toggle switches to hide or show components on the virtual build plate.
+
+---
+
+### 🏷️ 3. Smart Model Versions Hierarchy & Priority (Issue #87)
+Keep track of model iterations and remixes without clutter.
+- **Newest Version Priority:** Clicking a model card in the library automatically opens the latest iteration.
+- **Older Version Alert Banner:** Viewing an older version prominently displays an amber alert banner: *"You are viewing an older version of this model"* with an instant link to the latest iteration.
+- **Version Indicators:** Badges (`LATEST`, `NEWER`, `OLDER`) on the Other Versions list, and a version count pill (`vX`) on library cards.
+
+---
+
+### 💾 4. 1-Click Backup Restore (`POST /api/system/restore`)
+Disaster recovery is now completely seamless.
+- Upload a previously downloaded GyroidVault `.zip` backup directly from **Settings → System Settings**.
+- **Automated Safety Copy:** Creates a timestamped `.bak` copy of the current SQLite database before unpacking.
+- **Integrity Validation:** Verifies SQLite 3 binary headers (`SQLite format 3`) before applying changes.
+- **Hot Reload:** Automatically hot-reloads the SQLite database connection and re-initializes tables with zero server downtime.
+
+---
+
+### 📐 5. Gallery Grid Density & Customizable Badges
+Personalize your library view in **Settings → User Interface**:
+- **Density Selector:** Switch between **Compact** (more models per screen), **Comfortable** (balanced default), and **Large** (prominent high-res previews).
+- **Toggleable Card Elements:** Granular checkboxes to show or hide format badges (STL, 3MF), file counts, and printed status badges.
+
+---
+
+### ⚡ 6. Automatic 3D Thumbnails & Maintenance Scanner
+- **Auto-Snapshot on View:** If enabled in Settings, opening a model without a cover image will trigger the 3D Studio to render the model, capture a clean canvas snapshot, and assign it as the model's thumbnail automatically.
+- **Batch Missing Thumbnail Scan:** A dedicated button in Maintenance settings scans for all models missing thumbnails and schedules their creation.
+
+---
+
+### ✍️ 7. Multi-line Print Tips Formatting (Issue #85)
+- Print tips on the model detail view now preserve paragraph breaks, indentation, and multi-line notes (`white-space: pre-wrap; word-break: break-word;`), preventing wall-of-text formatting.
+
+---
+
+### ☀️ 8. Light Mode Polish & High Contrast
+- **Taxonomy Rows:** Refactored category and tag management containers in Settings into clean, high-contrast light panels.
+- **3D Studio Controls:** Decoupled canvas overlay pills, dropdown selectors, and drawer elements from theme colors, ensuring crisp white text on the dark 3D canvas overlay.
+- **Sidebar Contrast:** Enhanced active item and category sub-item text readability in light theme.
+
+---
+
+### 🤝 9. Community Contributions & Fixes
+- **Thumbnail Upload Timestamp Fix (PR #86 by @zampierilucas):** Uploading or generating a thumbnail no longer updates the model's `updated_at` timestamp, preventing older models from jumping to the top of the library sort order.
+
+---
+
+## 🧪 Verification & Stability
+Every release of GyroidVault is verified against our automated pre-release test suite.
+- **100% Passing Tests (45/45)** covering AST scope analysis, syntax validation, RBAC security, CSRF protection, MCP protocol negotiation, backup restore, and multi-format file uploads.
+
+---
+
+## 🐳 Docker Deployment
+
+### Docker Compose
+```yaml
+services:
+  gyroidvault:
+    image: ghcr.io/teecodedev/gyroidvault:v2.4.0
+    container_name: gyroidvault
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./data:/app/data
+      - ./models:/models
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+```
+
+### Docker Run
+```bash
+docker run -d \
+  --name gyroidvault \
+  -p 3000:3000 \
+  -v $(pwd)/data:/app/data \
+  -v /path/to/your/models:/models \
+  ghcr.io/teecodedev/gyroidvault:v2.4.0
+```
+
+
 ### v2.2.0 (2026-09-27)
 - **Quick Format Filter Pills &amp; Clickable Badges:** Added instant format filter pills (All, STL, 3MF, STEP, G-Code, OBJ) to the library toolbar, clickable format badges on model cards, and a live library model/storage summary counter.
 - **Bulk Category Assignment:** Added a Category action button to the floating multi-select bar in both All Models and Folder Explorer (Browse) to assign or clear categories across multiple selected items at once.
