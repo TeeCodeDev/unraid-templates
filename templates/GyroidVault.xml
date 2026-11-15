@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Container version="2">
   <Name>GyroidVault</Name>
-  <Version>v2.2.0</Version>
+  <Version>v2.5.0</Version>
   <Repository>ghcr.io/teecodedev/gyroidvault:latest</Repository>
   <Registry>https://ghcr.io/teecodedev/gyroidvault</Registry>
   <Network>bridge</Network>
@@ -21,7 +21,7 @@
   <ExtraParams/>
   <PostArgs/>
   <CPUset/>
-  <Date>2026-09-27</Date>
+  <Date>2026-11-15</Date>
   <Screenshot>https://raw.githubusercontent.com/TeeCodeDev/GyroidVault/main/screenshots/library-grid.png</Screenshot>
   <Screenshot>https://raw.githubusercontent.com/TeeCodeDev/GyroidVault/main/screenshots/studio-model-detail.png</Screenshot>
   <Screenshot>https://raw.githubusercontent.com/TeeCodeDev/GyroidVault/main/screenshots/studio-pawn.png</Screenshot>
@@ -29,6 +29,74 @@
   <DonateText>If you like GyroidVault, buy me a coffee!</DonateText>
   <DonateLink>https://ko-fi.com/D1D51ZGUNL</DonateLink>
   <Changes>
+### v2.5.0 (2026-11-15)
+# GyroidVault v2.5.0 — Release Notes
+
+> **Tag:** `v2.5.0`  
+> **Docker Image:** `ghcr.io/teecodedev/gyroidvault:v2.5.0` (and `:latest`)  
+> **Live Website:** [gyroidvault.com](https://gyroidvault.com)
+
+GyroidVault v2.5.0 brings critical homelab data-safety protections, immersive 3D viewer responsiveness on modern high-resolution displays, and refined viewport interaction.
+
+A massive thank you to **[@zampierilucas](https://github.com/zampierilucas)** for contributing all three core improvements in this release! 🌟
+
+---
+
+## 🌟 Highlights & What's New
+
+### 🛡️ 1. Unmounted Storage Protection for Library Sync ([PR #90](https://github.com/TeeCodeDev/GyroidVault/pull/90))
+- **The Problem:** In NAS and homelab environments (Unraid, TrueNAS, Synology, NFS/SMB mounts), containers often boot up before external storage mounts are fully ready. Previously, `syncLibraryWithDisk` would see an empty mount point, assume all physical files were deleted, and purge models and files from the SQLite database.
+- **The Solution:** Added a strict sanity check before running the library sync. If the library directory is empty or unreadable, sync safely logs a warning and aborts immediately, refusing to wipe database entries.
+
+---
+
+### 🖥️ 2. Full-Height 3D Studio on High-Res Displays ([PR #88](https://github.com/TeeCodeDev/GyroidVault/pull/88))
+- On screens wider than 1024px (1080p, 1440p, 4K), the 3D Studio viewer now dynamically expands to fill available viewport height (`max(400px, calc(100vh - 424px))`) via the new `.viewer-fill` class.
+- Eliminates wasted vertical space on modern monitors and ultrawides, while keeping tablet and mobile views compact so file lists remain easily accessible.
+
+---
+
+### 🎯 3. Intuitive Orbit Controls & Auto-Rotate Disengage ([PR #89](https://github.com/TeeCodeDev/GyroidVault/pull/89))
+- Auto-spin now automatically turns off the moment you start rotating, panning, or zooming the model.
+- Prevents your inspection angle from drifting away after manual adjustments. Clicking the **Spin** button re-engages rotation whenever desired.
+
+---
+
+### 🧪 4. Extended Test Suite & Reliability
+- 2 new automated regression tests added to `tests/release-check.js` (`npm test`), bringing the total pre-release verification suite to **47 passed tests (100%)**.
+
+---
+
+## 🐳 Docker Deployment
+
+### Docker Compose
+```yaml
+services:
+  gyroidvault:
+    image: ghcr.io/teecodedev/gyroidvault:v2.5.0
+    container_name: gyroidvault
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./data:/app/data
+      - ./models:/models
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+```
+
+### Docker Run
+```bash
+docker run -d \
+  --name gyroidvault \
+  -p 3000:3000 \
+  -v $(pwd)/data:/app/data \
+  -v /path/to/your/models:/models \
+  ghcr.io/teecodedev/gyroidvault:v2.5.0
+```
+
+
 ### v2.2.0 (2026-09-27)
 - **Quick Format Filter Pills &amp; Clickable Badges:** Added instant format filter pills (All, STL, 3MF, STEP, G-Code, OBJ) to the library toolbar, clickable format badges on model cards, and a live library model/storage summary counter.
 - **Bulk Category Assignment:** Added a Category action button to the floating multi-select bar in both All Models and Folder Explorer (Browse) to assign or clear categories across multiple selected items at once.
