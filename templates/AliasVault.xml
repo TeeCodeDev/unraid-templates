@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>AliasVault</Name>
+  <Version>v0.32.0</Version>
+  <Repository>ghcr.io/aliasvault/aliasvault:latest</Repository>
+  <Registry>https://ghcr.io/aliasvault/aliasvault</Registry>
+  <Network>bridge</Network>
+  <MyPort>8085</MyPort>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/aliasvault/aliasvault/issues</Support>
+  <Project>https://github.com/aliasvault/aliasvault</Project>
+  <Overview>AliasVault is an open-source, privacy-first password and email alias manager. It combines end-to-end encrypted password storage, on-the-fly random email alias generation, a built-in incoming mail server (SMTP), and dedicated client web, desktop, and mobile apps with zero third-party cloud dependencies.&#xD;
+&#xD;
+[b]Key Features:[/b]&#xD;
+- [b]End-to-End Encryption:[/b] Zero-knowledge client-side encryption keeps all credentials, notes, and aliases completely private to you.&#xD;
+- [b]Built-in Email Server:[/b] Generates unique randomized email aliases on-the-fly for every service and receives confirmation emails directly inside the vault.&#xD;
+- [b]Official All-in-One Container:[/b] Bundles the web client, REST API, admin panel, task runner, and PostgreSQL database into a single, easy-to-manage container managed by s6-overlay.&#xD;
+- [b]Cross-Platform Access:[/b] Accessible via the web dashboard, browser extensions (Chrome, Firefox, Edge, Safari), and native mobile apps (iOS &amp; Android).&#xD;
+- [b]Self-Hosted &amp; Independent:[/b] Zero external telemetry or third-party server requirements.&#xD;
+&#xD;
+[b]Initial Setup:[/b]&#xD;
+1. Open the WebUI at [inline]http://[IP]:[PORT:80]/[/inline] to create your personal user account.&#xD;
+2. Access the administrator control panel at [inline]http://[IP]:[PORT:80]/admin[/inline] (user: [inline]admin[/inline]). See container logs for the initial admin password.&#xD;
+3. [b]Reverse Proxy &amp; HTTPS:[/b] For mobile app and remote browser extension connectivity, serve AliasVault behind an HTTPS reverse proxy (e.g. Nginx Proxy Manager, Traefik, Caddy, Cloudflare Tunnel) with a publicly trusted SSL certificate.&#xD;
+4. [b]Email Aliases (Optional):[/b] To receive emails for custom domain aliases directly, ensure port 25 is forwarded on your firewall to this container.&#xD;
+&#xD;
+[b]Credits &amp; Support:[/b]&#xD;
+- AliasVault is created by [b]Leendert de Borst (@lanedirt)[/b] ([url=https://github.com/aliasvault/aliasvault]GitHub[/url] | [url=https://www.aliasvault.com]Website[/url]). Support the developer on [url=https://buymeacoffee.com/lanedirt]Buy Me a Coffee[/url] or [url=https://opencollective.com/aliasvault]Open Collective[/url].&#xD;
+- The donation link below specifically supports the maintenance of this Unraid template repository.</Overview>
+  <Category>Security: Tools:Utilities Productivity:</Category>
+  <WebUI>http://[IP]:[PORT:80]/</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/TeeCodeDev/unraid-templates/main/templates/AliasVault.xml</TemplateURL>
+  <ReadMe>https://raw.githubusercontent.com/aliasvault/aliasvault/main/README.md</ReadMe>
+  <ExtraSearchTerms>aliasvault password manager bitwarden vaultwarden 1password simplelogin anonaddy email alias identity privacy</ExtraSearchTerms>
+  <License>AGPL-3.0</License>
+  <Icon>https://raw.githubusercontent.com/aliasvault/aliasvault/main/apps/web/public/img/icon-500.png</Icon>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <Date>2026-11-20</Date>
+  <Screenshot>https://github.com/user-attachments/assets/fa5bf64a-704d-4f09-b4e0-0310ab662204</Screenshot>
+  <Screenshot>https://github.com/user-attachments/assets/b5218609-217b-4c8d-8d5d-8c71e19bf057</Screenshot>
+  <Screenshot>https://github.com/user-attachments/assets/5d09ad78-d145-48a1-b8da-c5a1dc708886</Screenshot>
+  <Screenshot>https://github.com/user-attachments/assets/34fe650d-f08d-4c92-92e0-4e750b7a662a</Screenshot>
+  <DonateText>Support the Unraid template maintainer (TeeCodeDev)</DonateText>
+  <DonateLink>https://ko-fi.com/D1D51ZGUNL</DonateLink>
+  <Config Name="WebUI Port (HTTP)" Target="80" Default="8085" Mode="tcp" Description="The host port for AliasVault web interface and API (internal container port is 80)." Type="Port" Display="always" Required="true" Mask="false"/>
+  <Config Name="HTTPS Port" Target="443" Default="8443" Mode="tcp" Description="Optional container HTTPS port." Type="Port" Display="always" Required="false" Mask="false"/>
+  <Config Name="SMTP Port (Incoming Mail)" Target="25" Default="2525" Mode="tcp" Description="Port for incoming SMTP email traffic (forward port 25 on your router for custom alias domains)." Type="Port" Display="always" Required="false" Mask="false"/>
+  <Config Name="SMTP Submission Port" Target="587" Default="587" Mode="tcp" Description="Port for secure SMTP email submission." Type="Port" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Database Storage" Target="/database" Default="/mnt/user/appdata/aliasvault/database" Mode="rw" Description="Persistent storage for the built-in PostgreSQL database." Type="Path" Display="always" Required="true" Mask="false"/>
+  <Config Name="Secrets Storage" Target="/secrets" Default="/mnt/user/appdata/aliasvault/secrets" Mode="rw" Description="Persistent storage for auto-generated encryption keys and passwords." Type="Path" Display="always" Required="true" Mask="false"/>
+  <Config Name="Logs Storage" Target="/logs" Default="/mnt/user/appdata/aliasvault/logs" Mode="rw" Description="Persistent storage for server and mail service logs." Type="Path" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Certificates Storage" Target="/certificates" Default="/mnt/user/appdata/aliasvault/certificates" Mode="rw" Description="Optional storage for SSL/TLS certificates." Type="Path" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Public Registration" Target="PUBLIC_REGISTRATION_ENABLED" Default="true" Mode="" Description="Allow users to register new accounts from the web UI (set to 'false' to disable public signups)." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="Force HTTPS Redirect" Target="FORCE_HTTPS_REDIRECT" Default="false" Mode="" Description="Set to 'false' if running behind an external reverse proxy (SWAG, NPM, Traefik) terminating SSL, or 'true' to redirect HTTP to HTTPS." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="Admin IP Allowlist" Target="ADMIN_IP_ALLOWLIST" Default="" Mode="" Description="Optional comma-separated IP/CIDR allowlist for accessing the /admin panel (e.g. 192.168.1.0/24)." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Trusted Proxies" Target="TRUSTED_PROXIES" Default="" Mode="" Description="Upstream proxy IPs/CIDRs to trust for X-Forwarded-For headers (leave blank to trust RFC1918 private subnets)." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+</Container>

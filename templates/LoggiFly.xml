@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>LoggiFly</Name>
+  <Version>v2.2.0</Version>
+  <Repository>ghcr.io/clemcer/loggifly:latest</Repository>
+  <Registry>https://ghcr.io/clemcer/loggifly</Registry>
+  <Network>bridge</Network>
+  <MyPort/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/clemcer/LoggiFly/issues</Support>
+  <Project>https://github.com/clemcer/LoggiFly</Project>
+  <Overview>LoggiFly is a lightweight, real-time Docker container log monitor that scans for predefined keywords or regex patterns and sends instant notifications through your favorite channels (via ntfy or Apprise to 100+ services including Discord, Telegram, Slack, and webhooks).&#xD;
+&#xD;
+[b]Key Features:[/b]&#xD;
+- [b]Keyword &amp; Regex Detection:[/b] Match plain text keywords, complex regular expressions, and multi-line log entries.&#xD;
+- [b]Instant Alerts:[/b] Native direct support for ntfy (topics, priority, tags) and Apprise (100+ notification providers).&#xD;
+- [b]Container Actions:[/b] Automatically trigger a container restart or clean stop when critical error patterns or loops are detected.&#xD;
+- [b]Log Context Attachments:[/b] Automatically attach log excerpts to notifications for rapid debugging.&#xD;
+- [b]Hot Reloading:[/b] Changes made to [inline]config.yaml[/inline] are automatically detected and reloaded without restarting the container.&#xD;
+- [b]Remote Hosts &amp; Proxies:[/b] Compatible with direct Docker socket mounts or Docker Socket Proxies (Tecnativa, 11notes).&#xD;
+&#xD;
+[b]Initial Setup:[/b]&#xD;
+1. [b]Quickstart (Environment Variables):[/b] You can monitor containers immediately by filling out the [b]CONTAINERS[/b], [b]GLOBAL_KEYWORDS[/b], and [b]NTFY_URL[/b] or [b]APPRISE_URL[/b] fields.&#xD;
+2. [b]Advanced Setup (config.yaml):[/b] For per-container rules, regex filters, and actions, place your [inline]config.yaml[/inline] inside [inline]/mnt/user/appdata/loggifly[/inline]. See documentation for examples: [url=https://clemcer.github.io/loggifly/guide/config/]Configuration Guide[/url].&#xD;
+3. [b]Permissions:[/b] The Docker socket is mounted as read-only by default. If you use container actions (restart/stop), change the Docker Socket volume mode to [inline]rw[/inline].&#xD;
+&#xD;
+[b]Credits &amp; Support:[/b]&#xD;
+- LoggiFly is created by [b]clemcer[/b] ([url=https://github.com/clemcer/LoggiFly]GitHub[/url] | [url=https://clemcer.github.io/loggifly/]Documentation[/url]). Support the developer on [url=https://ko-fi.com/clemcer]Ko-fi[/url] or [url=https://www.buymeacoffee.com/clemcer]Buy Me a Coffee[/url].&#xD;
+- The donation link below specifically supports the maintenance of this Unraid template repository.</Overview>
+  <Category>Tools:Utilities Status:Management Status:Other</Category>
+  <WebUI/>
+  <TemplateURL>https://raw.githubusercontent.com/TeeCodeDev/unraid-templates/main/templates/LoggiFly.xml</TemplateURL>
+  <ReadMe>https://raw.githubusercontent.com/clemcer/LoggiFly/main/README.md</ReadMe>
+  <ExtraSearchTerms>loggifly logs log monitor alert notification ntfy apprise discord telegram docker autoheal</ExtraSearchTerms>
+  <License>MIT</License>
+  <Icon>https://raw.githubusercontent.com/clemcer/LoggiFly/main/docs/public/icon.png</Icon>
+  <ExtraParams>--read-only</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <Date>2026-11-20</Date>
+  <Screenshot>https://raw.githubusercontent.com/clemcer/LoggiFly/main/docs/public/collage.png</Screenshot>
+  <Screenshot>https://raw.githubusercontent.com/clemcer/LoggiFly/main/docs/public/vault_failed_login.gif</Screenshot>
+  <DonateText>Support the Unraid template maintainer (TeeCodeDev)</DonateText>
+  <DonateLink>https://ko-fi.com/D1D51ZGUNL</DonateLink>
+  <Config Name="AppData / Config Directory" Target="/config" Default="/mnt/user/appdata/loggifly" Mode="rw" Description="Directory to store config.yaml for fine-grained rules, keywords, and notification settings." Type="Path" Display="always" Required="true" Mask="false"/>
+  <Config Name="Docker Socket" Target="/var/run/docker.sock" Default="/var/run/docker.sock" Mode="ro" Description="Host Docker socket to stream container logs. Set to 'rw' if you configure container actions (restart/stop)." Type="Path" Display="always" Required="true" Mask="false"/>
+  <Config Name="Timezone" Target="TZ" Default="Europe/Amsterdam" Mode="" Description="Timezone for log timestamps in notifications (e.g. Europe/Amsterdam, UTC)." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="Monitored Containers (Quickstart)" Target="CONTAINERS" Default="" Mode="" Description="Optional comma-separated container names to monitor (e.g. 'vaultwarden,nextcloud'). Can be omitted if using config.yaml." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="Global Keywords (Quickstart)" Target="GLOBAL_KEYWORDS" Default="error,failed,panic" Mode="" Description="Optional comma-separated keywords to alert on across monitored containers. Can be omitted if using config.yaml." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="ntfy Server URL (Quickstart)" Target="NTFY_URL" Default="https://ntfy.sh" Mode="" Description="Optional ntfy server address (e.g. https://ntfy.sh or self-hosted http://192.168.1.50:80)." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="ntfy Topic (Quickstart)" Target="NTFY_TOPIC" Default="" Mode="" Description="Target ntfy notification topic name." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="ntfy Token" Target="NTFY_TOKEN" Default="" Mode="" Description="Optional access token for protected ntfy topics." Type="Variable" Display="advanced" Required="false" Mask="true"/>
+  <Config Name="Apprise URL (Quickstart)" Target="APPRISE_URL" Default="" Mode="" Description="Optional Apprise notification URL for Discord, Telegram, Slack, etc. (e.g. discord://webhook_id/webhook_token)." Type="Variable" Display="always" Required="false" Mask="true"/>
+  <Config Name="Strict Config Validation" Target="STRICT_CONFIG" Default="true" Mode="" Description="Refuse to start if unknown or misspelled fields are found in config.yaml (true / false)." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+</Container>
